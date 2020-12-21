@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "MyCmsElectron-Builder",
   "scripts": {
-    "all": "npm install && npm prune && npm run prepare && npm run build-all && npm run defaultdata-dev-import && npm run defaultdata-beta-import",
+    "all": "npm install && npm prune && npm run install-appbackend && npm run install-solr && npm run all-app",
+    "all-app": "npm install && npm prune && npm run prepare && npm run build-all && npm run defaultdata-dev-import && npm run defaultdata-beta-import",
     "build-all": "npm run build-electron-package && npm run build-after-copy-contrib && npm run build-after-copy-sbin && npm run build-after-copy-overrides",
     "build-after-copy-contrib": "cpx --verbose \"contrib/**/*\" dist/contrib/",
     "build-after-copy-overrides": "cpx --verbose \"overrides/after-build/root/all/**/*\" dist/ && cpx --verbose \"overrides/after-build/solr/all/**/*\" dist/contrib/solr/server/solr/",
@@ -11,6 +12,39 @@
     "build-electron-package": "cd app-backend && npm install && npm run electron-rebuild && npm prune && cd .. && electron-packager src/app --overwrite --extra-resource app-backend --out dist",
     "defaultdata-dev-import": "echo no defaultdata for dev",
     "defaultdata-beta-import": "echo no defaultdata for beta",
+    "install-appbackend": "npm run install-appbackend-src && npm run install-appbackend-checkout && npm run install-appbackend-copy-overrides && npm run install-appbackend-build && npm run install-appbackend-cleanout && npm run install-appbackend-dist",
+    "install-appbackend-cleanout": "cross-os install-appbackend-cleanout-os",
+    "install-appbackend-cleanout-os": {
+      "darwin": "./node_modules/.bin/rimraf app-backend-src/dist/tsc*",
+      "linux": "./node_modules/.bin/rimraf app-backend-src/dist/tsc*",
+      "win32": "node_modules\\.bin\\rimraf app-backend-src/dist/tsc*"
+    },
+    "install-appbackend-copy-overrides": "cpx --verbose \"overrides/app-backend-src/**/*\" app-backend-src/",
+    "install-appbackend-dist": "cpx --verbose \"app-backend-src/dist/**/*\" app-backend/dist/ && cpx --verbose \"app-backend-src/package-dist.json\" app-backend/ && mv app-backend/package-dist.json app-backend/package.json",
+    "install-appbackend-build": "cd app-backend-src && npm install && npm install && npm prune && npm run backend-test && npm run backend-build && npm run build-dev && npm run frontendserver-build-dev-de && npm run frontendserver-build-server-dev-de && npm run frontendserver-build-angularserver-dev-de && npm run frontendserver-build-admin-dev-de && npm run build-beta && npm run frontendserver-build-beta-de && npm run frontendserver-build-server-beta-de && npm run frontendserver-build-angularserver-beta-de && npm run frontendserver-build-admin-beta-de && npm run build-prod && npm run frontendserver-build-prod-de && npm run frontendserver-build-server-prod-de && npm run frontendserver-build-angularserver-prod-de && npm run frontendserver-build-admin-prod-de",
+    "install-appbackend-checkout": "git clone -b 3.0.0 --single-branch --depth 1 https://github.com/das-praktische-schreinerlein/mysimplehomepage.git app-backend-src",
+    "install-appbackend-src": "cross-os install-appbackend-src-os",
+    "install-appbackend-src-os": {
+      "darwin": "./node_modules/.bin/rimraf app-backend-src && ./node_modules/.bin/mkdirp app-backend-src && ./node_modules/.bin/rimraf app-backend && ./node_modules/.bin/mkdirp app-backend && ./node_modules/.bin/mkdirp app-backend/dist",
+      "linux": "./node_modules/.bin/rimraf app-backend-src && ./node_modules/.bin/mkdirp app-backend-src && ./node_modules/.bin/rimraf app-backend && ./node_modules/.bin/mkdirp app-backend && ./node_modules/.bin/mkdirp app-backend/dist",
+      "win32": "node_modules\\.bin\\rimraf app-backend-src && node_modules\\.bin\\mkdirp app-backend-src && node_modules\\.bin\\rimraf app-backend && node_modules\\.bin\\mkdirp app-backend && node_modules\\.bin\\mkdirp app-backend/dist"
+    },
+    "install-solr": "npm run install-solr-clear && npm run install-solr-download && npm run install-solr-unpack && npm run install-solr-rename && npm run install-solr-cleanout",
+    "install-solr-clear": "cross-os install-solr-clear-os",
+    "install-solr-clear-os": {
+      "darwin": "./node_modules/.bin/rimraf contrib/solr && ./node_modules/.bin/mkdirp contrib",
+      "linux": "./node_modules/.bin/rimraf contrib/solr && ./node_modules/.bin/mkdirp contrib",
+      "win32": "node_modules\\.bin\\rimraf contrib/solr && node_modules\\.bin\\mkdirp contrib"
+    },
+    "install-solr-download": "cd contrib && curl https://archive.apache.org/dist/lucene/solr/6.6.0/solr-6.6.0.tgz -o solr-6.6.0.tgz",
+    "install-solr-unpack": "cd contrib && tar xzf solr-6.6.0.tgz",
+    "install-solr-rename": "cd contrib && mv solr-6.6.0 solr",
+    "install-solr-cleanout": "cross-os install-solr-cleanout-os",
+    "install-solr-cleanout-os": {
+      "darwin": "./node_modules/.bin/rimraf contrib/solr-6.6.0.tgz contrib/solr/example",
+      "linux": "./node_modules/.bin/rimraf contrib/solr-6.6.0.tgz contrib/solr/example",
+      "win32": "node_modules\\.bin\\rimraf contrib/solr-6.6.0.tgz contrib/solr/example"
+    },
     "prepare": "npm run prepare-build",
     "prepare-build": "cross-os prepare-build-os",
     "prepare-build-os": {
