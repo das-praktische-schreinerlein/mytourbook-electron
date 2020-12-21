@@ -1,0 +1,12 @@
+{
+    "frontendStartUrl": "http://localhost:4002/myshpbeta/de/",
+    "backendCheckUrl": "http://localhost:4101/api/v1/de/pdoc/",
+    "backendStaticBaseUrl": "http://localhost:4101/api/static/",
+    "backendRequirePath": "../app-backend/dist/backend/backend",
+    "frontendServerRequirePath": "../app-backend/dist/frontendserver-beta-de/frontendserver",
+    "backendConfigPath": "../../../config/backend-beta.json",
+    "frontendConfigPath": "../../../config/frontend-beta.json",
+    "firewallConfigPath": "../../../config/firewall-beta.json",
+    "flgStartSolr": false,
+    "flgDebug": false
+}

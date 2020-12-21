@@ -1,0 +1,6 @@
+{
+    "port": 4001,
+    "cacheFolder": "../../../cache/myshpdev/",
+    "redirectFileJson": "../../../config/redirects.dev.json",
+    "redirectOnlyCached": false
+}
