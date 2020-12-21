@@ -2,6 +2,6 @@
     "filePathPDocJson": "../../../config/pdocs.json",
     "cacheConfig": {
     },
-    "port": 5101,
+    "port": 5102,
     "corsOrigin": true
 }

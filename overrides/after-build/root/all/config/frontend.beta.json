@@ -1,6 +1,0 @@
-{
-    "port": 5002,
-    "cacheFolder": "../../../cache/myshpbeta/",
-    "redirectFileJson": "../../../config/redirects.beta.json",
-    "redirectOnlyCached": false
-}

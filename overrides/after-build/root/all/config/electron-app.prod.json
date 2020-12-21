@@ -1,0 +1,12 @@
+{
+    "frontendStartUrl": "http://localhost:5003/myshp/de/",
+    "backendCheckUrl": "http://localhost:5102/api/v1/de/pdoc/",
+    "backendStaticBaseUrl": "http://localhost:5102/api/static/",
+    "backendRequirePath": "../app-backend/dist/backend/backend",
+    "frontendServerRequirePath": "../app-backend/dist/frontendserver-de/frontendserver",
+    "backendConfigPath": "../../../config/backend.prod.json",
+    "frontendConfigPath": "../../../config/frontend.prod.json",
+    "firewallConfigPath": "../../../config/firewall.prod.json",
+    "flgStartSolr": false,
+    "flgDebug": false
+}
