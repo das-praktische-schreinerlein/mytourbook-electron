@@ -19,7 +19,7 @@
     "build-electron-package": "cd app-backend && npm install && npm run electron-rebuild && npm prune && cd .. && electron-packager src/app --overwrite --extra-resource app-backend --out dist",
     "defaultdata-dev-import": "echo no defaultdata for dev",
     "defaultdata-prod-import": "echo no defaultdata for prod",
-    "install-appbackend": "npm run install-appbackend-src && npm run install-appbackend-checkout && npm run install-appbackend-copy-overrides && npm run install-appbackend-build && npm run install-appbackend-cleanout && npm run install-appbackend-dist",
+    "install-appbackend": "npm run install-appbackend-src && npm run install-appbackend-checkout && npm run install-appbackend-copy-overrides && npm run install-appbackend-build && npm run install-appbackend-cleanout && npm run install-appbackend-dist && npm run install-appbackend-sbin",
     "install-appbackend-cleanout": "cross-os install-appbackend-cleanout-os",
     "install-appbackend-cleanout-os": {
       "darwin": "./node_modules/.bin/rimraf app-backend-src/dist/tsc*",
@@ -28,13 +28,14 @@
     },
     "install-appbackend-copy-overrides": "cpx --verbose \"overrides/app-backend-src/**/*\" app-backend-src/",
     "install-appbackend-dist": "cpx --verbose \"app-backend-src/dist/**/*\" app-backend/dist/ && cpx --verbose \"app-backend-src/package-dist.json\" app-backend/ && mv app-backend/package-dist.json app-backend/package.json",
+    "install-appbackend-sbin": "cpx --verbose \"app-backend-src/sbin/**/*\" app-backend/sbin/",
     "install-appbackend-build": "cd app-backend-src && npm install && npm install && npm prune && npm run backend-test && npm run testCoverage && npm run backend-build && npm run build-dev && npm run frontendserver-build-dev-de && npm run frontendserver-build-server-dev-de && npm run frontendserver-build-angularserver-dev-de && npm run frontendserver-build-admin-dev-de && npm run build-prod && npm run frontendserver-build-prod-de && npm run frontendserver-build-server-prod-de && npm run frontendserver-build-angularserver-prod-de && npm run frontendserver-build-admin-prod-de",
     "install-appbackend-checkout": "cross-var git clone -b $npm_package_config_mycmsgitversion --single-branch --depth 1 $npm_package_config_mycmsgiturl app-backend-src",
     "install-appbackend-src": "cross-os install-appbackend-src-os",
     "install-appbackend-src-os": {
-      "darwin": "./node_modules/.bin/rimraf app-backend-src && ./node_modules/.bin/mkdirp app-backend-src && ./node_modules/.bin/rimraf app-backend && ./node_modules/.bin/mkdirp app-backend && ./node_modules/.bin/mkdirp app-backend/dist",
-      "linux": "./node_modules/.bin/rimraf app-backend-src && ./node_modules/.bin/mkdirp app-backend-src && ./node_modules/.bin/rimraf app-backend && ./node_modules/.bin/mkdirp app-backend && ./node_modules/.bin/mkdirp app-backend/dist",
-      "win32": "node_modules\\.bin\\rimraf app-backend-src && node_modules\\.bin\\mkdirp app-backend-src && node_modules\\.bin\\rimraf app-backend && node_modules\\.bin\\mkdirp app-backend && node_modules\\.bin\\mkdirp app-backend/dist"
+      "darwin": "./node_modules/.bin/rimraf app-backend-src && ./node_modules/.bin/mkdirp app-backend-src && ./node_modules/.bin/rimraf app-backend && ./node_modules/.bin/mkdirp app-backend && ./node_modules/.bin/mkdirp app-backend/dist && ./node_modules/.bin/mkdirp app-backend/sbin",
+      "linux": "./node_modules/.bin/rimraf app-backend-src && ./node_modules/.bin/mkdirp app-backend-src && ./node_modules/.bin/rimraf app-backend && ./node_modules/.bin/mkdirp app-backend && ./node_modules/.bin/mkdirp app-backend/dist && ./node_modules/.bin/mkdirp app-backend/sbin",
+      "win32": "node_modules\\.bin\\rimraf app-backend-src && node_modules\\.bin\\mkdirp app-backend-src && node_modules\\.bin\\rimraf app-backend && node_modules\\.bin\\mkdirp app-backend && node_modules\\.bin\\mkdirp app-backend/dist && node_modules\\.bin\\mkdirp app-backend/sbin"
     },
     "install-solr": "npm run install-solr-clear && npm run install-solr-download && npm run install-solr-unpack && npm run install-solr-cleanout",
     "install-solr-clear": "cross-os install-solr-clear-os",
