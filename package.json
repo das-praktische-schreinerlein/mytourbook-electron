@@ -8,8 +8,9 @@
     "solrdownloadurl": "https://archive.apache.org/dist/lucene/solr/6.6.0/solr-6.6.0.tgz"
   },
   "scripts": {
-    "all": "npm install && npm prune && npm run install-appbackend && npm run all-apponly",
-    "all-withsolr": "npm install && npm prune && npm run install-appbackend && npm run install-solr && npm run all-apponly",
+    "all": "npm run all-withoutsolr",
+    "all-withoutsolr": "npm install && npm run install-appbackend && npm run all-apponly",
+    "all-withsolr": "npm install && npm run install-appbackend && npm run install-solr && npm run all-apponly",
     "all-apponly": "npm install && npm prune && npm run prepare && npm run build-all && npm run defaultdata-dev-import && npm run defaultdata-prod-import",
     "build-all": "npm run build-electron-package && npm run build-after-copy-contrib && npm run build-after-copy-sbin && npm run build-after-copy-overrides",
     "build-after-copy-contrib": "cpx --verbose \"contrib/**/*\" dist/contrib/",
