@@ -150,7 +150,7 @@ class MyCmsElectronApplication extends BaseElectronApplication {
         const me = this;
 
         // start solr
-        exec(this.solrCmdPath + ' ' + this.cmdSolrStartArgs.join(' '), function callback(error, stdout, stderr) {
+        exec(this.solrCmdPath + ' ' + this.cmdSolrStartArgs.join(' '), {'SOLR_JETTY_HOST': '127.0.0.1'}, function callback(error, stdout, stderr) {
             if (error) {
                 me.showError('start solr: ', error + '\n' + stdout + '\n' + stderr, function () {
                     if (errAction) {
@@ -168,7 +168,7 @@ class MyCmsElectronApplication extends BaseElectronApplication {
     stopSolr(allAction) {
         const me = this;
 
-        exec(this.solrCmdPath + ' ' + this.cmdSolrStopArgs.join(' '), function callback(error, stdout, stderr) {
+        exec(this.solrCmdPath + ' ' + this.cmdSolrStopArgs.join(' '), {'SOLR_JETTY_HOST': '127.0.0.1'}, function callback(error, stdout, stderr) {
             if (error) {
                 me.showError('stop solr: ', error + '\n' + stdout + '\n' + stderr, function () {
                     if (allAction) {
@@ -246,7 +246,7 @@ class MyCmsElectronApplication extends BaseElectronApplication {
                 }
             }).then(response => {
                 if (response.status !== 200) {
-                    return Promise.reject('cant start fronntend: ' + response.status);
+                    return Promise.reject('cant start frontend: ' + response.status);
                 }
 
                 if (me.frontendLoaded) {
