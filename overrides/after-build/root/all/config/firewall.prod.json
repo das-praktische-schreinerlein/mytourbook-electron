@@ -57,8 +57,8 @@
             "file": "image.png"
         }
     },
-    "allowLocalHostOnly": false,
-    "allowLocalNetOnly": true,
+    "allowLocalHostOnly": true,
+    "allowLocalNetOnly": false,
     "whiteListIps": [
     ],
     "blackListIps": [

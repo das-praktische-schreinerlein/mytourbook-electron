@@ -15,5 +15,7 @@ export const environment: AppEnvironment = {
     allowAutoPlay: false,
     backendApiBaseUrl: 'http://localhost:5100/api/v1/',
     cookieLawSeenName: 'cookieLawSeenV20180525',
-    trackingProviders: []
+    trackingProviders: [],
+    adminBackendApiBaseUrl: 'http://localhost:5190/adminapi/v1/',
+    adminWritable: true
 };

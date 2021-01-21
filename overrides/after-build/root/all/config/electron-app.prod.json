@@ -5,6 +5,7 @@
     "backendRequirePath": "../app-backend/dist/backend/backend",
     "frontendServerRequirePath": "../app-backend/dist/frontendserver-de/frontendserver",
     "backendConfigPath": "../../../config/backend.prod.json",
+    "adminCliBackendConfigPath": "../../../config/adminCli.prod.json",
     "frontendConfigPath": "../../../config/frontend.prod.json",
     "firewallConfigPath": "../../../config/firewall.prod.json",
     "flgStartSolr": false,

@@ -4,22 +4,25 @@
   "description": "MyCmsElectron-Builder",
   "config": {
     "mycmsgiturl": "https://github.com/das-praktische-schreinerlein/mysimplehomepage.git",
-    "mycmsgitversion": "3.0.0",
-    "solrdownloadurl": "https://archive.apache.org/dist/lucene/solr/6.6.0/solr-6.6.0.tgz"
+    "mycmsgitversion": "4.0.0"
   },
   "scripts": {
-    "all": "npm run all-withoutsolr",
-    "all-withoutsolr": "npm install && npm run install-appbackend && npm run all-apponly",
-    "all-withsolr": "npm install && npm run install-appbackend && npm run install-solr && npm run all-apponly",
-    "all-apponly": "npm install && npm prune && npm run prepare && npm run build-all && npm run defaultdata-dev-import && npm run defaultdata-prod-import",
-    "build-all": "npm run build-electron-package && npm run build-after-copy-contrib && npm run build-after-copy-sbin && npm run build-after-copy-overrides",
+    "all": "npm install && npm run install-appbackend && npm run all-apponly",
+    "all-apponly": "npm install && npm prune && npm prune && npm run prepare && npm run build-all && npm run defaultdata-dev-import && npm run defaultdata-prod-import",
+    "build-all": "npm run build-electron-package && npm run build-after-copy-contrib && npm run build-after-copy-appbackend-solr && npm run build-after-copy-sbin && npm run build-after-copy-overrides && npm run del-packageddist-solr",
     "build-after-copy-contrib": "cpx --verbose \"contrib/**/*\" dist/contrib/",
     "build-after-copy-overrides": "cpx --verbose \"overrides/after-build/root/all/**/*\" dist/ && cpx --verbose \"overrides/after-build/solr/all/**/*\" dist/contrib/solr/server/solr/",
     "build-after-copy-sbin": "cpx --verbose \"app-backend/sbin/**/*\" dist/sbin/",
+    "build-after-copy-appbackend-solr": "cpx \"app-backend/dist/contrib/solr/**/*\" dist/contrib/solr",
     "build-electron-package": "cd app-backend && npm install && npm run electron-rebuild && npm prune && cd .. && electron-packager src/app --overwrite --extra-resource app-backend --out dist",
     "defaultdata-dev-import": "echo no defaultdata for dev",
     "defaultdata-prod-import": "echo no defaultdata for prod",
-    "install-appbackend": "npm run install-appbackend-src && npm run install-appbackend-checkout && npm run install-appbackend-copy-overrides && npm run install-appbackend-build && npm run install-appbackend-cleanout && npm run install-appbackend-dist && npm run install-appbackend-sbin",
+    "install-appbackend": "npm run install-appbackend-prepare && npm run install-appbackend-solr && npm run install-appbackend-package",
+    "install-appbackend-prepare": "npm run install-appbackend-src && npm run install-appbackend-checkout && npm run install-appbackend-copy-overrides && cd app-backend-src && npm install && npm prune",
+    "install-appbackend-package": "npm run install-appbackend-build && npm run install-appbackend-cleanout && npm run install-appbackend-package-dist && npm run install-appbackend-package-sbin && npm run install-appbackend-package-installer",
+    "install-appbackend-package-dist": "cpx --verbose \"app-backend-src/dist/**/*\" app-backend/dist/ && cpx --verbose \"app-backend-src/package-dist.json\" app-backend/ && mv app-backend/package-dist.json app-backend/package.json",
+    "install-appbackend-package-installer": "cpx --verbose \"app-backend-src/installer/db/sqlite/myshpexportdb/**/*\" app-backend/installer/db/sqlite/myshpexportdb/",
+    "install-appbackend-package-sbin": "cpx --verbose \"app-backend-src/sbin/**/*\" app-backend/sbin/",
     "install-appbackend-cleanout": "cross-os install-appbackend-cleanout-os",
     "install-appbackend-cleanout-os": {
       "darwin": "./node_modules/.bin/rimraf app-backend-src/dist/tsc*",
@@ -27,9 +30,8 @@
       "win32": "node_modules\\.bin\\rimraf app-backend-src/dist/tsc*"
     },
     "install-appbackend-copy-overrides": "cpx --verbose \"overrides/app-backend-src/**/*\" app-backend-src/",
-    "install-appbackend-dist": "cpx --verbose \"app-backend-src/dist/**/*\" app-backend/dist/ && cpx --verbose \"app-backend-src/package-dist.json\" app-backend/ && mv app-backend/package-dist.json app-backend/package.json",
-    "install-appbackend-sbin": "cpx --verbose \"app-backend-src/sbin/**/*\" app-backend/sbin/",
-    "install-appbackend-build": "cd app-backend-src && npm install && npm install && npm prune && npm run backend-test && npm run testCoverage && npm run backend-build && npm run build-dev && npm run frontendserver-build-dev-de && npm run frontendserver-build-server-dev-de && npm run frontendserver-build-angularserver-dev-de && npm run frontendserver-build-admin-dev-de && npm run build-prod && npm run frontendserver-build-prod-de && npm run frontendserver-build-server-prod-de && npm run frontendserver-build-angularserver-prod-de && npm run frontendserver-build-admin-prod-de",
+    "install-appbackend-solr": "cd app-backend-src && npm install && npm run install-solr",
+    "install-appbackend-build": "cd app-backend-src && npm run backend-test && npm run testCoverage && npm run backend-build && npm run build-dev && npm run frontendserver-build-dev-de && npm run frontendserver-build-server-dev-de && npm run frontendserver-build-angularserver-dev-de && npm run frontendserver-build-admin-dev-de && npm run build-prod && npm run frontendserver-build-prod-de && npm run frontendserver-build-server-prod-de && npm run frontendserver-build-angularserver-prod-de && npm run frontendserver-build-admin-prod-de",
     "install-appbackend-checkout": "cross-var git clone -b $npm_package_config_mycmsgitversion --single-branch --depth 1 $npm_package_config_mycmsgiturl app-backend-src",
     "install-appbackend-src": "cross-os install-appbackend-src-os",
     "install-appbackend-src-os": {
@@ -37,27 +39,12 @@
       "linux": "./node_modules/.bin/rimraf app-backend-src && ./node_modules/.bin/mkdirp app-backend-src && ./node_modules/.bin/rimraf app-backend && ./node_modules/.bin/mkdirp app-backend && ./node_modules/.bin/mkdirp app-backend/dist && ./node_modules/.bin/mkdirp app-backend/sbin",
       "win32": "node_modules\\.bin\\rimraf app-backend-src && node_modules\\.bin\\mkdirp app-backend-src && node_modules\\.bin\\rimraf app-backend && node_modules\\.bin\\mkdirp app-backend && node_modules\\.bin\\mkdirp app-backend/dist && node_modules\\.bin\\mkdirp app-backend/sbin"
     },
-    "install-solr": "npm run install-solr-clear && npm run install-solr-download && npm run install-solr-unpack && npm run install-solr-cleanout",
-    "install-solr-clear": "cross-os install-solr-clear-os",
-    "install-solr-clear-os": {
-      "darwin": "./node_modules/.bin/rimraf contrib/solr && ./node_modules/.bin/mkdirp contrib/solr",
-      "linux": "./node_modules/.bin/rimraf contrib/solr && ./node_modules/.bin/mkdirp contrib/solr",
-      "win32": "node_modules\\.bin\\rimraf contrib/solr && node_modules\\.bin\\mkdirp contrib/solr"
-    },
-    "install-solr-download": "cd contrib && cross-var curl $npm_package_config_solrdownloadurl -o solr.tgz",
-    "install-solr-unpack": "cd contrib && tar xzf solr.tgz -C solr --strip-components=1",
-    "install-solr-cleanout": "cross-os install-solr-cleanout-os",
-    "install-solr-cleanout-os": {
-      "darwin": "./node_modules/.bin/rimraf contrib/solr.tgz contrib/solr/example",
-      "linux": "./node_modules/.bin/rimraf contrib/solr.tgz contrib/solr/example",
-      "win32": "node_modules\\.bin\\rimraf contrib/solr.tgz contrib/solr/example"
-    },
     "prepare": "npm run prepare-build",
     "prepare-build": "cross-os prepare-build-os",
     "prepare-build-os": {
-      "darwin": "./node_modules/.bin/rimraf dist && ./node_modules/.bin/mkdirp dist",
-      "linux": "./node_modules/.bin/rimraf dist && ./node_modules/.bin/mkdirp dist",
-      "win32": "node_modules\\.bin\\rimraf dist && node_modules\\.bin\\mkdirp dist"
+      "darwin": "./node_modules/.bin/rimraf dist && ./node_modules/.bin/mkdirp dist && ./node_modules/.bin/mkdirp dist/contrib",
+      "linux": "./node_modules/.bin/rimraf dist && ./node_modules/.bin/mkdirp dist && ./node_modules/.bin/mkdirp dist/contrib",
+      "win32": "node_modules\\.bin\\rimraf dist && node_modules\\.bin\\mkdirp dist && node_modules\\.bin\\mkdirp dist\\contrib"
     },
     "del-env-dev": "cross-os del-env-dev-os",
     "del-env-dev-os": {
@@ -71,21 +58,28 @@
       "linux": "./node_modules/.bin/rimraf dist/mycms-electron-app-win32-x64/resources/app-backend/dist/frontendserver-de && ./node_modules/.bin/rimraf dist/mycms-electron-app-win32-x64/resources/app-backend/dist//myshp-server && ./node_modules/.bin/rimraf dist/mycms-electron-app-win32-x64/resources/app-backend/dist/static//myshp && ./node_modules/.bin/rimraf dist/database/*.prod.* && ./node_modules/.bin/rimraf dist/config/*.prod.* && ./node_modules/.bin/rimraf dist/contrib/solr/server/solr/*prod*",
       "win32": ".\\node_modules\\.bin\\rimraf dist\\mycms-electron-app-win32-x64\\resources\\app-backend\\dist\\frontendserver-de && .\\node_modules\\.bin\\rimraf dist\\mycms-electron-app-win32-x64\\resources\\app-backend\\dist\\/myshp-server && .\\node_modules\\.bin\\rimraf dist\\mycms-electron-app-win32-x64\\resources\\app-backend\\dist\\static\\/myshp && .\\node_modules\\.bin\\rimraf dist\\database\\*.prod.* && .\\node_modules\\.bin\\rimraf dist\\config\\*.prod.* && .\\node_modules\\.bin\\rimraf dist\\contrib\\solr\\server\\solr\\*prod*"
     },
+    "del-packageddist-solr": "cross-os del-packageddist-solr-os",
+    "del-packageddist-solr-os": {
+      "darwin": "./node_modules/.bin/rimraf dist/mycms-electron-app-win32-x64/resources/app-backend/dist/contrib/solr",
+      "linux": "./node_modules/.bin/rimraf dist/mycms-electron-app-win32-x64/resources/app-backend/dist/contrib/solr",
+      "win32": ".\\node_modules\\.bin\\rimraf dist\\mycms-electron-app-win32-x64\\resources\\app-backend\\dist\\contrib\\solr"
+    },
     "del-contrib-solr": "cross-os del-contrib-solr-os",
     "del-contrib-solr-os": {
       "darwin": "./node_modules/.bin/rimraf dist/contrib/solr",
       "linux": "./node_modules/.bin/rimraf dist/contrib/solr",
       "win32": ".\\node_modules\\.bin\\rimraf dist\\contrib\\solr"
-    }
+    },
+    "noop": "npm version"
   },
   "dependencies": {},
   "devDependencies": {
     "cpx": "1.5.0",
     "cross-os": "1.3.0",
     "cross-var-no-babel": "1.2.0",
-    "electron": "9.3.2",
-    "electron-packager": "15.1.0",
-    "electron-rebuild": "2.2.0",
+    "electron": "9.4.1",
+    "electron-packager": "15.2.0",
+    "electron-rebuild": "2.3.4",
     "rimraf": "3.0.2"
   }
 }

@@ -1,12 +1,17 @@
 {
     "frontendStartUrl": "http://localhost:5001/myshpdev/de/",
+    "adminServerBackendCheckUrl": "http://localhost:5190/adminapi/v1/de/status",
     "backendCheckUrl": "http://localhost:5100/api/v1/de/pdoc/",
     "backendStaticBaseUrl": "http://localhost:5100/api/static/",
+    "adminServerBackendRequirePath": "../app-backend/dist/backend/adminServer",
     "backendRequirePath": "../app-backend/dist/backend/backend",
     "frontendServerRequirePath": "../app-backend/dist/frontendserver-dev-de/frontendserver",
+    "adminServerBackendConfigPath": "../../../config/adminServer.dev.json",
+    "adminCliBackendConfigPath": "../../../config/adminCli.dev.json",
     "backendConfigPath": "../../../config/backend.dev.json",
     "frontendConfigPath": "../../../config/frontend.dev.json",
     "firewallConfigPath": "../../../config/firewall.dev.json",
     "flgStartSolr": false,
+    "flgStartAdminBackend": true,
     "flgDebug": false
 }

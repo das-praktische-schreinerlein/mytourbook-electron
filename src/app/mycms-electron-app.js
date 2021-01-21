@@ -11,16 +11,21 @@ class MyCmsElectronApplicationConfiguration extends BaseElectronApplicationConfi
     constructor (appConfig) {
         super(appConfig);
         this.frontendStartUrl = this.getOrDefault(appConfig, 'frontendStartUrl');
+        this.adminServerBackendCheckUrl = this.getOrDefault(appConfig, 'adminServerBackendCheckUrl');
         this.backendCheckUrl = this.getOrDefault(appConfig, 'backendCheckUrl');
         this.backendStaticBaseUrl = this.getOrDefault(appConfig, 'backendStaticBaseUrl');
+        this.adminServerBackendRequirePath = this.getOrDefault(appConfig, 'adminServerBackendRequirePath', '../app-backend/dist/backend/adminServer');
         this.backendRequirePath = this.getOrDefault(appConfig, 'backendRequirePath', '../app-backend/dist/backend/backend');
         this.backendCliRequirePath = this.getOrDefault(appConfig, 'backendCliRequirePath', '../app-backend/dist/backend/serverAdmin');
         this.frontendServerRequirePath = this.getOrDefault(appConfig, 'frontendServerRequirePath',
             '../app-backend/dist/frontendserver-all-de/frontendserver');
+        this.adminServerBackendConfigPath = this.getOrDefault(appConfig, 'adminServerBackendConfigPath');
+        this.adminCliBackendConfigPath = this.getOrDefault(appConfig, 'adminCliBackendConfigPath');
         this.backendConfigPath = this.getOrDefault(appConfig, 'backendConfigPath');
         this.frontendConfigPath = this.getOrDefault(appConfig, 'frontendConfigPath');
         this.firewallConfigPath = this.getOrDefault(appConfig, 'firewallConfigPath');
         this.flgStartSolr = this.getOrDefault(appConfig, 'flgStartSolr', false);
+        this.flgStartAdminBackend = this.getOrDefault(appConfig, 'flgStartAdminBackend', false);
     }
 }
 
@@ -31,6 +36,7 @@ class MyCmsElectronApplication extends BaseElectronApplication {
         // defaults
         this.availableTries = 60;
         this.checkIntervall = 2000;
+        this.adminBackendLoaded = false;
         this.backendLoaded = false;
         this.frontendLoaded = false;
 
@@ -40,6 +46,8 @@ class MyCmsElectronApplication extends BaseElectronApplication {
         this.cmdSolrStartArgs = ['start', '-f', '-q', '-p', this.solrPort];
         this.cmdSolrStopArgs = ['stop', '-p', this.solrPort];
 
+        this.adminServerBackendConfig = undefined;
+        this.adminCliBackendConfig = undefined;
         this.backendConfig = undefined;
         this.frontendConfig = undefined;
         this.firewallConfig = undefined;
@@ -50,6 +58,20 @@ class MyCmsElectronApplication extends BaseElectronApplication {
     }
 
     initConfigs() {
+        if (this.appConfig.flgStartAdminBackend) {
+            this.adminServerBackendConfig = JSON.parse(fs.readFileSync(this.appConfig.adminServerBackendConfigPath, { encoding: 'utf8' }));
+            if (this.adminServerBackendConfig === undefined || this.adminServerBackendConfig.port === undefined) {
+                throw new Error('cant load adminServerBackendConfig: "' + this.appConfig.adminServerBackendConfig + '"' +
+                    ' = "' + this.adminServerBackendConfig + '"');
+            }
+        }
+
+        this.adminCliBackendConfig = JSON.parse(fs.readFileSync(this.appConfig.adminCliBackendConfigPath, { encoding: 'utf8' }));
+        if (this.adminCliBackendConfig === undefined) {
+            throw new Error('cant load adminCliBackendConfig: "' + this.appConfig.adminCliBackendConfig + '"' +
+                ' = "' + this.adminCliBackendConfig + '"');
+        }
+
         this.backendConfig = JSON.parse(fs.readFileSync(this.appConfig.backendConfigPath, { encoding: 'utf8' }));
         if (this.backendConfig === undefined || this.backendConfig.port === undefined) {
             throw new Error('cant load backendConfig: "' + this.appConfig.backendConfigPath + '"' +
@@ -96,9 +118,12 @@ class MyCmsElectronApplication extends BaseElectronApplication {
 
         // load and start backend
         const processStartArgs = ['node', 'start',
+            '--adminbackend', this.appConfig.adminServerBackendConfigPath,
+            '--adminclibackend', this.appConfig.adminCliBackendConfigPath,
             '--backend', this.appConfig.backendConfigPath,
             '--firewall', this.appConfig.firewallConfigPath,
-            '--frontend', this.appConfig.frontendConfigPath];
+            '--frontend', this.appConfig.frontendConfigPath
+        ];
         process.argv = processStartArgs;
         try {
             const frontendserver = require(this.appConfig.frontendServerRequirePath);
@@ -106,6 +131,16 @@ class MyCmsElectronApplication extends BaseElectronApplication {
             console.error("cant start frontendserver", processStartArgs, this.appConfig.frontendServerRequirePath, error);
             process.kill(process.pid);
         }
+
+        if (this.appConfig.flgStartAdminBackend) {
+            try {
+                const adminBackendServer = require(this.appConfig.adminServerBackendRequirePath);
+            } catch(error) {
+                console.error("cant start adminBackendServer", processStartArgs, this.appConfig.adminServerBackendRequirePath, error);
+                process.kill(process.pid);
+            }
+        }
+
         try {
             const backend = require(this.appConfig.backendRequirePath);
         } catch(error) {
@@ -118,9 +153,12 @@ class MyCmsElectronApplication extends BaseElectronApplication {
         // load and start backendCli
         const argv = minimist(process.argv.slice(1));
         const processStartArgs = ['node', 'start',
+            '--adminbackend', this.appConfig.adminServerBackendConfigPath,
+            '--adminclibackend', this.appConfig.adminCliBackendConfigPath,
             '--backend', this.appConfig.backendConfigPath,
             '--firewall', this.appConfig.firewallConfigPath,
-            '--frontend', this.appConfig.frontendConfigPath];
+            '--frontend', this.appConfig.frontendConfigPath
+        ];
         const configuredProcessStartArgs = this.createConfiguredCliCommand(argv, processStartArgs)
         this.runConfigureCliCommand(configuredProcessStartArgs);
     }
@@ -128,7 +166,11 @@ class MyCmsElectronApplication extends BaseElectronApplication {
     createConfiguredCliCommand(argv, defaultProcessStartArgs) {
         switch (argv['command']) {
             case 'generateSitemap':
-                defaultProcessStartArgs.push('--command', 'generateSitemap', '--sitemap', argv['sitemap']);
+                defaultProcessStartArgs.push(
+                    '--command', 'generateSitemap',
+                    '--action', 'generateSitemap',
+                    '--sitemap', argv['sitemap']
+                );
                 return defaultProcessStartArgs;
             default:
                 console.error("cant start backendCli - unknown command", argv['command']);
@@ -211,11 +253,11 @@ class MyCmsElectronApplication extends BaseElectronApplication {
 
     checkBackend() {
         const me = this;
-        if (this.backendLoaded && me.frontendLoaded) {
+        if (me.backendLoaded && me.frontendLoaded && (!me.appConfig.flgStartAdminBackend || me.adminBackendLoaded)) {
             return Promise.resolve('backend already loaded');
         }
 
-        if ((this.backendLoaded && me.frontendLoaded) || this.availableTries < 0) {
+        if (this.availableTries < 0) {
             return Promise.reject('cant load backend availableTries < 0');
         }
 
@@ -240,10 +282,30 @@ class MyCmsElectronApplication extends BaseElectronApplication {
                 return Promise.resolve('backend already loaded');
             }
 
-            return Axios.get(this.appConfig.frontendStartUrl, {
-                headers: {
-                    Cookie:  tokenCookie + ';'
-                }
+            var promise;
+            if (me.appConfig.flgStartAdminBackend) {
+                promise = Axios.post(this.appConfig.adminServerBackendCheckUrl, {}, {
+                    headers: {
+                        Cookie:  tokenCookie + ';'
+                    }
+                }).then(response => {
+                    if (response.status !== 200) {
+                        return Promise.reject('cant start adminbackend');
+                    }
+
+                    me.backendLoaded = true;
+                    return Promise.resolve('adminbackend loaded')
+                });
+            } else {
+                promise = Promise.resolve('adminbackend deactivated');
+            }
+
+            return promise.then(() => {
+                return Axios.get(this.appConfig.frontendStartUrl, {
+                    headers: {
+                        Cookie:  tokenCookie + ';'
+                    }
+                });
             }).then(response => {
                 if (response.status !== 200) {
                     return Promise.reject('cant start frontend: ' + response.status);
