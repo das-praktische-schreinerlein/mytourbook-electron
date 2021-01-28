@@ -19,9 +19,10 @@
     "defaultdata-prod-import": "echo no defaultdata for prod",
     "install-appbackend": "npm run install-appbackend-prepare && npm run install-appbackend-solr && npm run install-appbackend-package",
     "install-appbackend-prepare": "npm run install-appbackend-src && npm run install-appbackend-checkout && npm run install-appbackend-copy-overrides && cd app-backend-src && npm install && npm prune",
-    "install-appbackend-package": "npm run install-appbackend-build && npm run install-appbackend-cleanout && npm run install-appbackend-package-dist && npm run install-appbackend-package-sbin && npm run install-appbackend-package-installer",
+    "install-appbackend-package": "npm run install-appbackend-build && npm run install-appbackend-cleanout && npm run install-appbackend-package-dist && npm run install-appbackend-package-sbin && npm run install-appbackend-package-installer && npm run install-appbackend-package-migrations",
     "install-appbackend-package-dist": "cpx --verbose \"app-backend-src/dist/**/*\" app-backend/dist/ && cpx --verbose \"app-backend-src/package-dist.json\" app-backend/ && mv app-backend/package-dist.json app-backend/package.json",
     "install-appbackend-package-installer": "cpx --verbose \"app-backend-src/installer/db/sqlite/myshpexportdb/**/*\" app-backend/installer/db/sqlite/myshpexportdb/",
+    "install-appbackend-package-migrations": "cpx --verbose \"app-backend-src/migrations/**/*\" app-backend/migrations/",
     "install-appbackend-package-sbin": "cpx --verbose \"app-backend-src/sbin/**/*\" app-backend/sbin/",
     "install-appbackend-cleanout": "cross-os install-appbackend-cleanout-os",
     "install-appbackend-cleanout-os": {

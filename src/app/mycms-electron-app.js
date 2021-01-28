@@ -164,6 +164,19 @@ class MyCmsElectronApplication extends BaseElectronApplication {
     }
 
     createConfiguredCliCommand(argv, defaultProcessStartArgs) {
+        if (argv['preparedCommand']) {
+            switch (argv['preparedCommand']) {
+                case 'prepareAppEnv':
+                    defaultProcessStartArgs.push(
+                        '--preparedCommand', 'prepareAppEnv'
+                    );
+                    return defaultProcessStartArgs;
+                default:
+                    console.error("cant start backendCli - unknown preparedCommand", argv['preparedCommand']);
+                    process.kill(process.pid);
+            }
+        }
+
         switch (argv['command']) {
             case 'generateSitemap':
                 defaultProcessStartArgs.push(
