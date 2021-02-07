@@ -11,3 +11,4 @@ For more information take a look at documentation:
 - [configuration instructions](docs/CONFIGURATION.md)
 - [credits for used libraries](docs/CREDITS.md)
 
+![startpage](docs/images/startpage-x400.png)

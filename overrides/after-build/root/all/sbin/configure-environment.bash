@@ -5,3 +5,5 @@ CONFIG_BASEDIR=../../../config/
 MYCMS=${MYSCRIPTPATH}/../mycms-electron-app-win32-x64/resources/app-backend/
 W_CONFIG_BASEDIR="..\\..\\..\\config\\"
 W_MYCMS="..\\mycms-electron-app-win32-x64\\resources\\app-backend\\"
+
+START_ADMINSERVER=true
