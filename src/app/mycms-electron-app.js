@@ -25,6 +25,7 @@ class MyCmsElectronApplicationConfiguration extends BaseElectronApplicationConfi
         this.frontendConfigPath = this.getOrDefault(appConfig, 'frontendConfigPath');
         this.firewallConfigPath = this.getOrDefault(appConfig, 'firewallConfigPath');
         this.flgStartSolr = this.getOrDefault(appConfig, 'flgStartSolr', false);
+        this.solrPort = this.getOrDefault(appConfig, 'solrPort');
         this.flgStartAdminBackend = this.getOrDefault(appConfig, 'flgStartAdminBackend', false);
     }
 }
@@ -41,7 +42,7 @@ class MyCmsElectronApplication extends BaseElectronApplication {
         this.frontendLoaded = false;
 
         // optional Solr
-        this.solrPort = 9999;
+        this.solrPort = appConfig.solrPort;
         this.solrCmdPath = [this.cwd, '..', 'contrib', 'solr', 'bin', 'solr'].join(path.sep);
         this.cmdSolrStartArgs = ['start', '-f', '-q', '-p', this.solrPort];
         this.cmdSolrStopArgs = ['stop', '-p', this.solrPort];
@@ -58,6 +59,11 @@ class MyCmsElectronApplication extends BaseElectronApplication {
     }
 
     initConfigs() {
+        if (this.appConfig.flgStartSolr && this.appConfig.solrPort === undefined) {
+            throw new Error('flgStartSolr=true but invalid configured solrPort: "appConfig.solrPort"' +
+                ' = "' + this.appConfig.solrPort + '"');
+        }
+
         if (this.appConfig.flgStartAdminBackend) {
             this.adminServerBackendConfig = JSON.parse(fs.readFileSync(this.appConfig.adminServerBackendConfigPath, { encoding: 'utf8' }));
             if (this.adminServerBackendConfig === undefined || this.adminServerBackendConfig.port === undefined) {
