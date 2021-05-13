@@ -2,7 +2,7 @@
  
 # Versions
  
-## 1.0.0 (2021-05-14)
+## 1.0.0 (2021-05-13)
 - initial version
 
 ### new features
