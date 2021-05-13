@@ -35,4 +35,10 @@ The [common application-coonfig-files](../app-backend-src/docs/CONFIGURATION.md)
 - config-files and scripts to use after build: -> overrides/after-build/root/all
 - source-files to use before build: overrides/app-backend-src/overrides/before-build
 
-
+## security
+Configure the allowed token in overrides/after-build/root/all/config/firewall.PROFILE.json
+```
+    "allowTokenCookieOnly": {
+        "blimblam": ["blimblamblum"]
+    },
+```
