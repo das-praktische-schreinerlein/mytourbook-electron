@@ -4,8 +4,10 @@
 // The list of which env maps to which file can be found in `angular-cli.json`.
 
 import {AppEnvironment} from './app-environment';
+import {DataMode} from '../shared/commons/model/datamode.enum';
 
 export const environment: AppEnvironment = {
+    hideCopyrightFooter: true,
     production: false,
     assetsPathVersionSnippet: '',
     assetsPathVersionSuffix: '',
@@ -17,5 +19,9 @@ export const environment: AppEnvironment = {
     cookieLawSeenName: 'cookieLawSeenV20180525',
     trackingProviders: [],
     adminBackendApiBaseUrl: 'http://localhost:5190/adminapi/v1/',
-    adminWritable: true
+    adminWritable: true,
+    hideInternalDescLinks: false,
+    hideInternalImages: false,
+    startDataMode: DataMode.BACKEND,
+    availableDataModes: [DataMode.BACKEND]
 };

@@ -1,4 +1,5 @@
 import {AppEnvironment} from './app-environment';
+import {DataMode} from '../shared/commons/model/datamode.enum';
 
 export const environment: AppEnvironment = {
     production: true,
@@ -10,7 +11,11 @@ export const environment: AppEnvironment = {
     allowAutoPlay: false,
     backendApiBaseUrl: 'http://localhost:5102/api/v1/',
     cookieLawSeenName: 'cookieLawSeenV20180525',
-    trackingProviders: []
+    trackingProviders: [],
+    hideInternalDescLinks: false,
+    hideInternalImages: false,
+    startDataMode: DataMode.BACKEND,
+    availableDataModes: [DataMode.BACKEND]
 };
 
 // unset logger
