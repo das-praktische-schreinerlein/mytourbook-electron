@@ -31,7 +31,7 @@
       "win32": "node_modules\\.bin\\rimraf app-backend-src/dist/tsc*"
     },
     "install-appbackend-copy-overrides": "cpx --verbose \"overrides/app-backend-src/**/*\" app-backend-src/",
-    "install-appbackend-solr": "cd app-backend-src && npm install && npm run install-solr",
+    "install-appbackend-solr": "cd app-backend-src && npm run install-solr",
     "install-appbackend-build": "cd app-backend-src && npm run backend-test && npm run testCoverage && npm run backend-build && npm run build-viewer-de && npm run build-dev && npm run frontendserver-build-dev-de && npm run frontendserver-build-server-dev-de && npm run frontendserver-build-angularserver-dev-de && npm run frontendserver-build-admin-dev-de && npm run build-prod && npm run frontendserver-build-prod-de && npm run frontendserver-build-server-prod-de && npm run frontendserver-build-angularserver-prod-de && npm run frontendserver-build-admin-prod-de",
     "install-appbackend-checkout": "cross-var git clone -b $npm_package_config_mycmsgitversion --single-branch --depth 1 $npm_package_config_mycmsgiturl app-backend-src",
     "install-appbackend-src": "cross-os install-appbackend-src-os",
