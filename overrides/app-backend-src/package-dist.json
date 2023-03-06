@@ -1,6 +1,6 @@
 {
   "name": "mysimplehomepage",
-  "version": "4.0.0",
+  "version": "4.4.0",
   "license": "Apache-2.0",
   "angular-cli": {},
   "scripts": {
@@ -38,9 +38,10 @@
     "db-migrate-sqlite3": "0.4.0",
     "inline-source": "7.0.0",
     "knex": "0.19.5",
+    "lz-string": "1.4.4",
     "mysql": "2.18.1",
     "redis": "3.0.2",
-    "sqlite3": "4.2.0"
+    "sqlite3": "5.0.0 -- dont upgrade because newer versions are not running with electron 9.4.1"
   },
   "dependencies": {
     "minimist": "1.2.5",
