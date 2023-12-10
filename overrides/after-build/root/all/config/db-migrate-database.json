@@ -1,0 +1,6 @@
+{
+    "myshpdb_sqlite3": {
+        "driver": "sqlite3",
+        "filename": "../../../database/myshp.dev.sqlite"
+    }
+}

@@ -6,11 +6,14 @@ export const environment: AppEnvironment = {
     production: false, // TODO set this to false for development
     assetsPathVersionSnippet: '',
     assetsPathVersionSuffix: '',
+    backendApiBaseUrl: undefined,
     defaultSearchTypes: '',
     emptyDefaultSearchTypes: '',
     useAssetStoreUrls: false,
+    pdocWritable: false,
+    pdocActionTagWritable: false,
+    pdocEmptyDefaultSearchTypes: 'page',
     allowAutoPlay: false,
-    backendApiBaseUrl: undefined,
     cookieLawSeenName: 'cookieLawSeenV20180525',
     trackingProviders: [], // Angulartics2Piwik
     staticPDocsFile: 'assets/staticdata/static.myshppdocs.js',

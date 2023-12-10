@@ -7,3 +7,5 @@ W_CONFIG_BASEDIR="..\\..\\..\\config\\"
 W_MYCMS="..\\mycms-electron-app-win32-x64\\resources\\app-backend\\"
 
 START_ADMINSERVER=true
+AUTOSTARTIMPORT=false
+AUTOSTARTEXPORT=true

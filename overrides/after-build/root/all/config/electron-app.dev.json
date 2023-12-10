@@ -1,7 +1,7 @@
 {
     "frontendStartUrl": "http://localhost:5001/myshpdev/de/",
     "adminServerBackendCheckUrl": "http://localhost:5190/adminapi/v1/de/status",
-    "backendCheckUrl": "http://localhost:5100/api/v1/de/pdoc/",
+    "backendCheckUrl": "http://localhost:5100/api/v1/de/pages/",
     "backendStaticBaseUrl": "http://localhost:5100/api/static/",
     "adminServerBackendRequirePath": "../app-backend/dist/backend/adminServer",
     "backendRequirePath": "../app-backend/dist/backend/backend",

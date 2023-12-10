@@ -2,13 +2,13 @@
  
 # Versions
 
-## 1.1.0
-- now bases on mysimplehomepage-4.4.0
-- added viewer
+## 2.0.0
+- now bases on mysimplehomepage-5.0.0
+- added viewer and page-management
 
 ### new features
-- see changelog of mysimplehomepage-4.4.0
-- frontend: added viewer
+- see changelog of mysimplehomepage-5.0.0
+- frontend: added viewer and page-management
 
 ### improvements
 - none

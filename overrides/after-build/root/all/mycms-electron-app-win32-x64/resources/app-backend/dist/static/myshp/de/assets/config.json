@@ -1,11 +1,72 @@
 {
     "components": {
+        "pdoc-showpage": {
+            "allowedQueryParams": [],
+            "availableTabs": {
+                "ALL_ENTRIES": true,
+                "PAGE": true
+            }
+        },
         "pdoc-sectionpage": {
+            "pageContainerOrder": [
+                "contentContainer",
+                "searchHintContainer",
+                "newsContainer",
+                "sectionsContainer",
+                "topTenContainer",
+                "dashBoardContainer",
+                "adminAreaContainer",
+                "tagcloudContainer",
+                "statisticBoardContainer"
+            ],
+            "bestMatchingTabsOrder": [
+                "ALL"
+            ],
+            "favoritesTabsOrder": [
+                "ALL"
+            ],
+            "availableTabs": {
+                "ALL": true
+            },
+            "availableToDoDashboardRows": {
+            },
+            "availableDoneDashboardRows": {
+            }
+        },
+        "pdoc-editor-commands": {
+        },
+        "pdoc-searchpage": {
+            "availableCreateActionTypes": "PAGE"
+        },
+        "pdoc-actions": {
+            "actionTags": [
+            ]
+        },
+        "cdoc-odobjectdetails": {
+            "defaultShowKeyAsTooltip": true,
+            "defaultFilterForNameToShowNameAndKey": ["bla", "Defa.*", "Default"]
+        },
+        "cdoc-extended-object-properties":  {
+            "allowedExtendedObjectProperties": {
+                "list-item-flat-big": ["IMAGE_COUNT", "IMAGE_TOP_COUNT", "IMAGE_FAV_COUNT", "VIDEO_COUNT", "ADDITIONAL_ROUTE_COUNT", "TRACK_COUNT", "ROUTE_COUNT", "TRIP_COUNT", "NEWS_COUNT", "INFO_COUNT", "LOCATION_COUNT", "POI_COUNT"],
+                "show-big": ["IMAGE_COUNT", "IMAGE_TOP_COUNT", "IMAGE_FAV_COUNT", "VIDEO_COUNT", "ADDITIONAL_ROUTE_COUNT", "TRACK_COUNT", "ROUTE_COUNT", "TRIP_COUNT", "NEWS_COUNT", "INFO_COUNT", "LOCATION_COUNT", "POI_COUNT"]
+            },
+            "modes": {
+                "list-item-flat-big": "short",
+                "show-big": "long"
+            }
         }
     },
     "services": {
         "adminJobArea": {
-            "jobsAllowed": true
+            "jobsAllowed": false
+        },
+        "htmlTogglerRenderer": {
+            "doAllBlockToggler": {
+                "visibility": false
+            },
+            "appendToggler": [
+            ]
         },
         "global": {
             "TODO set this to hide: hideCopyrightFooter": true

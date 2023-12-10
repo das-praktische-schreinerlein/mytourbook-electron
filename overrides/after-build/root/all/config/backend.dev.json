@@ -1,7 +1,30 @@
 {
+    "profile": "dev",
     "filePathPDocJson": "../../../config/pdocs.json",
     "nodejsBinaryPath": "..\\..\\..\\sbin\\node-cli.bat",
     "inlineJsPath": "dist/backend/create-allinone-html.js",
+    "startPDocApi": true,
+    "pdocDataStoreAdapter": "PDocSqlAdapter",
+    "pdocWritable": true,
+    "PDocSqlAdapter": {
+        "client": "sqlite3",
+        "connection": {
+            "filename": "../../../database/myshp.dev.sqlite"
+        },
+        "facetCacheUsage": {
+            "active": false,
+            "entities": {
+            }
+        },
+        "facetCacheConfig": {
+            "datastore": {
+                "scriptPath": "node_modules/@dps/mycms-commons/dist/facetcache-commons/model/db/sqlite3"
+            },
+            "facets": [
+            ],
+            "checkInterval": 2
+        }
+    },
     "cacheConfig": {
     },
     "port": 5100,
