@@ -1,0 +1,10 @@
+{
+    "profile": "prod",
+    "filePathPDocJson": "../../../config/pdocs.json",
+    "startPDocApi": false,
+    "cacheConfig": {
+    },
+    "port": 5102,
+    "bindIp": "127.0.0.1",
+    "corsOrigin": true
+}

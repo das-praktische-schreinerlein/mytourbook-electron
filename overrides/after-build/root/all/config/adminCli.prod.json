@@ -1,0 +1,29 @@
+{
+    "profile": "prod",
+    "adminWritable": true,
+    "availableCommands": {
+        "generateSitemap": [
+            "*"
+        ]
+    },
+    "preparedCommands": {
+        "prepareAppEnv": {
+            "description": "prepare app-environment (do database-migrations...)",
+            "commands": [
+                {
+                    "parameters": {
+                        "command": "dbMigrate",
+                        "action": "migrateDB",
+                        "migrationDbConfigFile": "../../../config/db-migrate-database.json",
+                        "migrationsDir": "migrations/mediadb",
+                        "migrationEnv": "mediadbprod_sqlite3"
+                    }
+
+                }
+            ]
+        }
+    },
+    "constantParameters": {
+        "noOverrides": "use all parameters as put to commandline"
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "profile": "dev",
+    "adminWritable": true,
+    "availableCommands": {
+        "*": "*"
+    },
+    "preparedCommands": {
+        "prepareAppEnv": {
+            "description": "prepare app-environment (do database-migrations...)",
+            "commands": [
+                {
+                    "parameters": {
+                        "command": "dbMigrate",
+                        "action": "migrateDB",
+                        "migrationDbConfigFile": "../../../config/db-migrate-database.json",
+                        "migrationsDir": "migrations/myshpdb",
+                        "migrationEnv": "myshpdb_sqlite3"
+                    }
+
+                }
+            ]
+        }
+    },
+    "constantParameters": {
+        "noOverrides": "use all parameters as put to commandline"
+    }
+}

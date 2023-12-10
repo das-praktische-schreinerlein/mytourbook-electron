@@ -1,0 +1,39 @@
+{
+    "routerErrorsConfigs" : {
+        "pdoc_de": {
+            "pattern": "/api/v1/de/pages/$",
+            "file": "pdocsearch.json"
+        },
+        "pdoc_en": {
+            "pattern": "/api/v1/de/pages/$",
+            "file": "pdocsearch.json"
+        },
+        "pdoc_params_de": {
+            "pattern": "/api/v1/de/pages/.+",
+            "file": "pdoc.json"
+        },
+        "pdoc_params_en": {
+            "pattern": "/api/v1/de/pages/.+",
+            "file": "pdoc.json"
+        },
+        "tracks": {
+            "pattern": "/tracks/.*",
+            "file": "track.gpx"
+        },
+        "digifotos": {
+            "pattern": "/digifotos/.*",
+            "file": "image.png"
+        }
+    },
+    "allowLocalHostOnly": true,
+    "allowLocalNetOnly": false,
+    "whiteListIps": [
+    ],
+    "blackListIps": [
+    ],
+    "allowTokenCookieOnly": {
+        "blimblam": ["blimblamblum"]
+    },
+    "dnsBLConfig": {
+    }
+}

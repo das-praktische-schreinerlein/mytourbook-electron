@@ -1,0 +1,6 @@
+{
+  "name": "mycms-electron-app",
+  "version": "1.0.0",
+  "description": "MyCmsElectron-Application",
+  "main": "main.js"
+}
