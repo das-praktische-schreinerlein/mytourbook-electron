@@ -538,6 +538,30 @@
         "tdoc-actions": {
             "actionTags": [
                 {
+                    "key": "show",
+                    "type": "show",
+                    "name": "\uD83D\uDD0E Show",
+                    "shortName": "&#x1f50e;",
+                    "payload": {
+                        "outlet": "tdocmodalshow"
+                    },
+                    "showFilter": [
+                        {
+                            "property": "dummy",
+                            "command": "EQ",
+                            "expectedValues": ["dummy"]
+                        }
+                    ],
+                    "recordAvailability": [
+                        {
+                            "property": "type",
+                            "command": "CSVIN",
+                            "expectedValues": ["LOCATION", "location", "TRACK", "track", "ROUTE", "route", "TRIP", "trip", "NEWS", "news", "INFO", "info", "PLAYLIST", "playlist", "POI", "poi", "ODIMGOBJECT", "odimgobject"]
+                        }
+                    ],
+                    "configAvailability": []
+                },
+                {
                     "key": "local_album_current",
                     "type": "albumtag",
                     "name": "\u2764 local Album",
@@ -560,6 +584,11 @@
                         }
                     ],
                     "configAvailability": [
+                        {
+                            "property": "tdocMaxItemsPerAlbum",
+                            "command": "GE",
+                            "expectedValues": [10]
+                        }
                     ]
                 },
                 {
@@ -772,6 +801,13 @@
         "tdoc-listheader": {
             "allowAutoplay": true
         },
+        "pdoc-showpage": {
+            "allowedQueryParams": [],
+            "availableTabs": {
+                "ALL_ENTRIES": true,
+                "PAGE": true
+            }
+        },
         "pdoc-sectionpage": {
             "pageContainerOrder": [
                 "contentContainer",
@@ -815,7 +851,8 @@
                 "TRIP": true,
                 "PLAYLIST": true,
                 "POI": true,
-                "VIDEO": true
+                "VIDEO": true,
+                "ALL": true
             }
         },
         "cdoc-extended-object-properties":  {
@@ -831,7 +868,12 @@
     },
     "services": {
         "seo": {
-            "tdocIndexableTypes": ["INFO", "ROUTE", "LOCATION", "NEWS"]
+            "tdocIndexableTypes": [
+                "INFO",
+                "ROUTE",
+                "LOCATION",
+                "NEWS"
+            ]
         },
         "serverItemExport": {
             "maxAllowedM3UItems": 1000
