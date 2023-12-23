@@ -2,7 +2,7 @@
  
 # Versions
 
-## 2.0.0
+## 2.0.0 (2023-12-23)
 - now bases on mysimplehomepage-5.0.0
 - added viewer and page-management
 
