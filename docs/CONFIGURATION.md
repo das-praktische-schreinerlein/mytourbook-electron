@@ -1,4 +1,4 @@
-# Configure MySimpleHomePage-Electron-App
+# Configure MyTourbook-Electron-App
 
 ## base-config
 There exists 2 modes to run the application: development and production.
@@ -12,10 +12,10 @@ If you want to configure other options than the default-values you can configure
 With these files you configure the electron-app and features to start.
 ```
 {
-    "frontendStartUrl": "http://localhost:5001/myshpdev/de/",
+    "frontendStartUrl": "http://localhost:5001/mytbdev/de/",
     "adminServerBackendCheckUrl": "http://localhost:5190/adminapi/v1/de/status",
-    "backendCheckUrl": "http://localhost:5100/api/v1/de/pdoc/",
-    "backendStaticBaseUrl": "http://localhost:5100/api/static/",
+    "backendCheckUrl": "http://localhost:4400/api/v1/de/pdoc/",
+    "backendStaticBaseUrl": "http://localhost:4400/api/static/",
     "adminServerBackendRequirePath": "../app-backend/dist/backend/adminServer",
     "backendRequirePath": "../app-backend/dist/backend/backend",
     "frontendServerRequirePath": "../app-backend/dist/frontendserver-dev-de/frontendserver",

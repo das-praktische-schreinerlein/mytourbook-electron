@@ -1,6 +1,6 @@
-# credits for used libraries of MySimpleHomePage-Electron-App
+# credits for used libraries of MyTourbook-Electron-App
 
-MySimpleHomePage-Electron-App uses a bunch of libraries and tools. Many thanx to the people behind these projects.
+MyTourbook-Electron-App uses a bunch of libraries and tools. Many thanx to the people behind these projects.
 
 ## build-tools
 - base

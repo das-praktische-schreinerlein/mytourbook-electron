@@ -2,23 +2,63 @@
     "profile": "prod",
     "adminWritable": true,
     "availableCommands": {
-        "generateSitemap": [
-            "*"
-        ]
+        "*": "*"
     },
     "preparedCommands": {
-        "prepareAppEnv": {
-            "description": "prepare app-environment (do database-migrations...)",
+        "prepareAppEnvBeforeBuild": {
+            "description": "prepare app-environment (no actions required)",
+            "commands": [
+            ]
+        },
+        "prepareAppEnvAfterInstall": {
+            "description": "prepare app-environment (reset master runtime passwords)",
             "commands": [
                 {
                     "parameters": {
-                        "command": "dbMigrate",
-                        "action": "migrateDB",
-                        "migrationDbConfigFile": "../../../config/db-migrate-database.json",
-                        "migrationsDir": "migrations/mediadb",
-                        "migrationEnv": "mediadbprod_sqlite3"
+                        "command": "initConfig",
+                        "action": "resetServicePasswords",
+                        "configbasepath": "../../../config",
+                        "installerdbbasepath,": "../../../installer/db",
+                        "solrconfigbasepath": "../../../contrib/solr/server/solr"
                     }
-
+                }
+            ]
+        },
+        "prepareAppEnvAfterUpdate": {
+            "description": "prepare app-environment after update (reset solr passwords)",
+            "commands": [
+                {
+                    "parameters": {
+                        "command": "initConfig",
+                        "action": "resetSolrPasswords",
+                        "configbasepath": "../../../config",
+                        "installerdbbasepath,": "../../../installer/db",
+                        "solrconfigbasepath": "../../../contrib/solr/server/solr"
+                    }
+                }
+            ]
+        },
+        "prepareAppEnv": {
+            "description": "prepare app-environment on every startup (reset runtime passwords)",
+            "commands": [
+                {
+                    "parameters": {
+                        "command": "initConfig",
+                        "action": "resetSolrPasswords",
+                        "configbasepath": "../../../config",
+                        "installerdbbasepath,": "../../../installer/db",
+                        "solrconfigbasepath": "../../../contrib/solr/server/solr"
+                    }
+                },
+                {
+                    "parameters": {
+                        "command": "initConfig",
+                        "action": "resetTokenCookie",
+                        "tokenkey": "blimblam",
+                        "configbasepath": "../../../config",
+                        "installerdbbasepath,": "../../../installer/db",
+                        "solrconfigbasepath": "../../../contrib/solr/server/solr"
+                    }
                 }
             ]
         }

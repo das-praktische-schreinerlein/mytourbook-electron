@@ -1,0 +1,27 @@
+{
+    "basePath": "installer/db",
+    "environments": {
+        "mytbexportbetadb_sqlite": {
+            "client": "sqlite3",
+            "connection": {
+                "filename": "../../../database/mytbexportbetadb.sqlite"
+            },
+            "solr": {
+                "core": "http://localhost:9999/solr/coremytbbeta/",
+                "username": "mytbadmin",
+                "password": "SolrRocks"
+            }
+        },
+        "mytbexportproddb_sqlite": {
+            "client": "sqlite3",
+            "connection": {
+                "filename": "../../../database/mytbexportproddb.sqlite"
+            },
+            "solr": {
+                "core": "http://localhost:9999/solr/coremytbprod/",
+                "username": "mytbadmin",
+                "password": "SolrRocks"
+            }
+        }
+    }
+}

@@ -1,5 +1,5 @@
 import {AppEnvironment} from './app-environment';
-import {DataMode} from '../shared/commons/model/datamode.enum';
+import {DataMode} from '../shared/tdoc-commons/model/datamode.enum';
 
 export const environment: AppEnvironment = {
     hideCopyrightFooter: true,
@@ -7,16 +7,29 @@ export const environment: AppEnvironment = {
     assetsPathVersionSnippet: '',
     assetsPathVersionSuffix: '',
     backendApiBaseUrl: undefined,
-    defaultSearchTypes: '',
-    emptyDefaultSearchTypes: '',
+    tracksBaseUrl: undefined,
+    audioBaseUrl: undefined,
+    picsBaseUrl: undefined,
+    picsPreviewPathResolution: 'x300',
+    videoBaseUrl: undefined,
+    defaultSearchTypes: 'route,location,track,trip,news',
+    emptyDefaultSearchTypes: 'route,location,track,trip,news,image,video,info',
     useAssetStoreUrls: false,
+    useAudioAssetStoreUrls: false,
+    useVideoAssetStoreUrls: false,
+    skipMediaCheck: false,
     pdocWritable: false,
     pdocActionTagWritable: false,
     pdocEmptyDefaultSearchTypes: 'page',
-    allowAutoPlay: false,
+    tdocWritable: false,
+    tdocActionTagWritable: false,
+    allowAutoPlay: true,
+    tdocMaxItemsPerAlbum: -1,
+    m3uAvailable: false,
     cookieLawSeenName: 'cookieLawSeenV20180525',
     trackingProviders: [], // Angulartics2Piwik
-    staticPDocsFile: 'assets/staticdata/static.myshppdocs.js',
+    staticPDocsFile: 'assets/staticdata/static.mytbpdocs.js',
+    staticTDocsFiles: ['assets/staticdata/static.mytbtdocs.js'],
     hideInternalDescLinks: true,
     hideInternalImages: true,
     startDataMode: DataMode.STATIC,

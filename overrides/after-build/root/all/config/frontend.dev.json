@@ -1,8 +1,8 @@
 {
     "profile": "dev",
-    "port": 5001,
+    "port": 4501,
     "bindIp": "127.0.0.1",
-    "cacheFolder": "../../../cache/myshpdev/",
+    "cacheFolder": "../../../cache/mytbdev/",
     "redirectFileJson": "../../../config/redirects.dev.json",
     "redirectOnlyCached": false
 }

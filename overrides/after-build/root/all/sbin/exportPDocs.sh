@@ -28,7 +28,7 @@ if [ ! -d "${EXPORTDIR}" ]; then
 fi
 
 echo "start - generate ${EXPORTDIR}/${EXPORTNAME}.json for ${LANGKEYS} ${PROFILES}"
-cd ${MYCMS}
+cd ${MYTB}
 node dist/backend/serverAdmin.js\
      --adminclibackend ${CONFIG_BASEDIR}adminCli.${CONFIGPROFILE}.json\
      --backend ${CONFIG_BASEDIR}backend.${CONFIGPROFILE}.json\

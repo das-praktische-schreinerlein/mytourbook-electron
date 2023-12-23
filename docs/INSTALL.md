@@ -1,4 +1,4 @@
-# Install and run MySimpleHomePage-Electron-App
+# Install and run MyTourbook-Electron-App
 
 ## prepare build
 - build all

@@ -3,101 +3,259 @@
     "commandConfig": {
         "adminWritable": true,
         "preparedCommands": {
-            "PUBLISH Pages: exportPagesToServerConfig": {
-                "description": "export pages to server-configs",
+            "MEDIAIMPORT: prepareMediaFiles": {
+                "description": "prepare media in media-import-directory: import/SOURCE -> afterwards check import/images/GROUPED to import/images/READY",
                 "commands": [
                     {
                         "parameters": {
-                            "command": "pageManager",
-                            "action": "exportPDocFile",
+                            "command": "mediaImportManager",
+                            "action": "copyFilesToDateFolder",
                             "backend": "../../../config/backend.dev.json",
-                            "exportName": "pdocs-de",
-                            "exportDir": "../../../config/",
-                            "profiles": "profile_dev,profile_prod",
-                            "langkeys": "lang_de"
-                        }
-                    },
-                    {
-                        "parameters": {
-                            "command": "pageManager",
-                            "action": "exportPDocFile",
-                            "backend": "../../../config/backend.dev.json",
-                            "exportName": "pdocs-dev-de",
-                            "exportDir": "../../../config/",
-                            "profiles": "profile_dev",
-                            "langkeys": "lang_de"
-                        }
-                    },
-                    {
-                        "parameters": {
-                            "command": "pageManager",
-                            "action": "exportPDocFile",
-                            "backend": "../../../config/backend.dev.json",
-                            "exportName": "pdocs-prod-de",
-                            "exportDir": "../../../config/",
-                            "profiles": "profile_prod",
-                            "langkeys": "lang_de"
-                        }
-                    },
-                    {
-                        "parameters": {
-                            "command": "pageManager",
-                            "action": "exportPDocFile",
-                            "backend": "../../../config/backend.dev.json",
-                            "exportName": "pdocs-en",
-                            "exportDir": "../../../config/",
-                            "profiles": "profile_dev,profile_prod",
-                            "langkeys": "lang_en"
-                        }
-                    },
-                    {
-                        "parameters": {
-                            "command": "pageManager",
-                            "action": "exportPDocFile",
-                            "backend": "../../../config/backend.dev.json",
-                            "exportName": "pdocs-dev-en",
-                            "exportDir": "../../../config/",
-                            "profiles": "profile_dev",
-                            "langkeys": "lang_en"
-                        }
-                    },
-                    {
-                        "parameters": {
-                            "command": "pageManager",
-                            "action": "exportPDocFile",
-                            "backend": "../../../config/backend.dev.json",
-                            "exportName": "pdocs-prod-en",
-                            "exportDir": "../../../config/",
-                            "profiles": "profile_prod",
-                            "langkeys": "lang_en"
+                            "defaultLocationName": "todo-rename-location",
+                            "sourceDir": "../../../filestore/import/SOURCE",
+                            "groupedDir": "../../../filestore/import/images/GROUPED",
+                            "archiveImageDir": "../../../filestore/archive"
                         }
                     }
                 ]
             },
-            "PUBLISH Pages: exportPagesToDist": {
-                "description": "export pages to dist",
+            "MEDIAIMPORT: importMediaFiles": {
+                "description": "import media from media-import-directory: import/images/READY into in media-directory",
                 "commands": [
                     {
                         "parameters": {
-                            "command": "pageManager",
-                            "action": "exportPDocFile",
+                            "command": "mediaImportManager",
+                            "action": "moveVideosToVideoFolder",
                             "backend": "../../../config/backend.dev.json",
-                            "exportName": "pdocs",
-                            "exportDir": "dist/static/myshpviewer/de/assets/",
-                            "profiles": "profile_static",
-                            "langkeys": "lang_de"
+                            "readyImageDir": "../../../filestore/import/images/READY",
+                            "readyVideoDir": "../../../filestore/import/videos/READY"
                         }
                     },
                     {
                         "parameters": {
-                            "command": "pageManager",
-                            "action": "exportPDocViewerFile",
+                            "command": "mediaImportManager",
+                            "action": "copyDirsWithPrefixPathAndBackup",
                             "backend": "../../../config/backend.dev.json",
-                            "exportName": "static.myshppdocs",
-                            "exportDir": "dist/static/myshpviewer/de/assets/staticdata/",
-                            "exportId": "assets/staticdata/static.myshppdocs.js",
-                            "profiles": "profile_viewer",
-                            "langkeys": "lang_de"
+                            "readyImageDir": "../../../filestore/import/images/READY",
+                            "readyVideoDir": "../../../filestore/import/videos/READY",
+                            "targetImageDir":  "../../../filestore/media/pics_full/",
+                            "targetVideoDir": "../../../filestore/media/video_full/",
+                            "archiveImageDir": "../../../filestore/archive",
+                            "archiveVideoDir": "../../../filestore/archive"
+                        }
+                    }
+                ]
+            },
+            "MEDIAIMPORT: syncMedia": {
+                "description": "sync media in media-directory",
+                "commands": [
+                    {
+                        "parameters": {
+                            "command": "mediaManager",
+                            "action": "generateTourDocsFromMediaDir",
+                            "backend": "../../../config/backend.dev.json",
+                            "importDir": "../../../filestore/media/pics_full/",
+                            "outputFile": "../../../filestore/media/pics_full/mytbdb_import-import-images.json",
+                            "renameFileIfExists": true
+                        }
+                    },
+                    {
+                        "parameters": {
+                            "command": "mediaManager",
+                            "action": "generateTourDocsFromMediaDir",
+                            "backend": "../../../config/backend.dev.json",
+                            "importDir": "../../../filestore/media/video_full/",
+                            "outputFile": "../../../filestore/media/video_full/mytbdb_import-import-videos.json",
+                            "renameFileIfExists": true
+                        }
+                    },
+                    {
+                        "parameters": {
+                            "command": "loadTourDoc",
+                            "action": "loadDocs",
+                            "backend": "../../../config/backend.dev.json",
+                            "file": "../../../filestore/media/pics_full/mytbdb_import-import-images.json",
+                            "renameFileAfterSuccess": true
+                        }
+                    },
+                    {
+                        "parameters": {
+                            "command": "loadTourDoc",
+                            "action": "loadDocs",
+                            "backend": "../../../config/backend.dev.json",
+                            "file": "../../../filestore/media/video_full/mytbdb_import-import-videos.json",
+                            "renameFileAfterSuccess": true
+                        }
+                    },
+                    {
+                        "parameters": {
+                            "command": "mediaManager",
+                            "action": "scaleImages",
+                            "backend": "../../../config/backend.dev.json"
+                        }
+                    },
+                    {
+                        "parameters": {
+                            "command": "mediaManager",
+                            "action": "scaleVideos",
+                            "backend": "../../../config/backend.dev.json"
+                        }
+                    }
+                ]
+            },
+            "POIIMPORT: importDataFromPoiDatabase": {
+                "description": "import data from poi-database: poi-import/poi_import.geojson",
+                "commands": [
+                    {
+                        "parameters": {
+                            "command": "convertTourDoc",
+                            "action": "convertGeoJsonToTourDoc",
+                            "backend": "../../../config/backend.dev.json",
+                            "srcFile": "../../../filestore/poi-import/poi_import.geojson",
+                            "mode": "RESPONSE",
+                            "file": "../../../filestore/poi-import/poi_import-dump.json",
+                            "renameFileIfExists": true
+                        }
+                    },
+                    {
+                        "parameters": {
+                            "command": "loadTourDoc",
+                            "action": "loadDocs",
+                            "backend": "../../../config/backend.dev.json",
+                            "file": "../../../filestore/poi-import/poi_import-dump.json",
+                            "renameFileAfterSuccess": true
+                        }
+                    }
+                ]
+            },
+            "MEDIAIMPORT: scaleMedia": {
+                "description": "scale media on media-directory",
+                "commands": [
+                    {
+                        "parameters": {
+                            "command": "mediaManager",
+                            "action": "scaleImages",
+                            "backend": "../../../config/backend.dev.json"
+                        }
+                    },
+                    {
+                        "parameters": {
+                            "command": "mediaManager",
+                            "action": "scaleVideos",
+                            "backend": "../../../config/backend.dev.json"
+                        }
+                    }
+                ]
+            },
+            "DATA: saveGpxPointsToDatabase": {
+                "description": "save GpxPoints to database",
+                "commands": [
+                    {
+                        "parameters": {
+                            "command": "geoManagerCommand",
+                            "action": "saveGpxPointsToDatabase",
+                            "backend": "../../../config/backend.dev.json",
+                            "parallel": 20,
+                            "profile": "track"
+                        }
+                    },
+                    {
+                        "parameters": {
+                            "command": "geoManagerCommand",
+                            "action": "saveGpxPointsToDatabase",
+                            "backend": "../../../config/backend.dev.json",
+                            "parallel": 20,
+                            "profile": "route"
+                        }
+                    }
+                ]
+            },
+            "EXPORT: exportTracks (gpx, json": {
+                "description": "export gpx/json-files to export-track-directory",
+                "commands": [
+                    {
+                        "parameters": {
+                            "command": "geoManagerCommand",
+                            "action": "exportGpxToFile",
+                            "backend": "../../../config/backend.dev.json",
+                            "parallel": 20,
+                            "profile": "track"
+                        }
+                    },
+                    {
+                        "parameters": {
+                            "command": "geoManagerCommand",
+                            "action": "exportJsonToFile",
+                            "backend": "../../../config/backend.dev.json",
+                            "parallel": 20,
+                            "profile": "track"
+                        }
+                    },
+                    {
+                        "parameters": {
+                            "command": "geoManagerCommand",
+                            "action": "exportGpxToFile",
+                            "backend": "../../../config/backend.dev.json",
+                            "parallel": 20,
+                            "profile": "route"
+                        }
+                    },
+                    {
+                        "parameters": {
+                            "command": "geoManagerCommand",
+                            "action": "exportJsonToFile",
+                            "backend": "../../../config/backend.dev.json",
+                            "parallel": 20,
+                            "profile": "route"
+                        }
+                    }
+                ]
+            },
+            "EXPORT: exportMediaFavorites": {
+                "description": "export media-favorites to export-media-directory",
+                "commands": [
+                    {
+                        "parameters": {
+                            "command": "mediaManager",
+                            "action": "exportImageFiles",
+                            "backend": "../../../config/backend.dev.json",
+                            "exportName": "favorites-top-images",
+                            "exportDir": "../../../filestore/exports/favorites",
+                            "directoryProfile": "default",
+                            "fileNameProfile": "default",
+                            "playlists": "Favorites",
+                            "rateMinFilter": 1,
+                            "parallel": 20,
+                            "resolutionProfile": "default",
+                            "showNonBlockedOnly": "showall"
+                        }
+                    },
+                    {
+                        "parameters": {
+                            "command": "mediaManager",
+                            "action": "exportVideoFiles",
+                            "backend": "../../../config/backend.dev.json",
+                            "exportName": "favorites-top-videos",
+                            "exportDir": "../../../filestore/exports/favorites",
+                            "directoryProfile": "default",
+                            "fileNameProfile": "default",
+                            "playlists": "Favorites",
+                            "rateMinFilter": 1,
+                            "parallel": 20,
+                            "resolutionProfile": "default",
+                            "showNonBlockedOnly": "showall"
+                        }
+                    },
+                    {
+                        "parameters": {
+                            "command": "mediaManager",
+                            "action": "generateHtmlViewerFileForExport",
+                            "backend": "../../../config/backend.dev.json",
+                            "exportName": "favorites-top",
+                            "exportDir": "../../../filestore/exports/favorites/",
+                            "createViewer": "html",
+                            "srcFile": "dist/static/mytbviewer/de/index.viewer.full.html",
+                            "srcFiles": "../../../filestore/exports/favorites/favorites-top-images.tdocsexport.json,../../../filestore/exports/favorites/favorites-top-videos.tdocsexport.json"
                         }
                     },
                     {
@@ -105,76 +263,85 @@
                             "command": "mediaManager",
                             "action": "inlineDataOnViewerFile",
                             "backend": "../../../config/backend.dev.json",
-                            "inlineProfile": "all",
-                            "srcFile": "dist/static/myshpviewer/de/index.viewer.html",
-                            "outputFile": "dist/static/myshpviewer/de/index.viewer.full.html"
-                        }
-                    },
-                    {
-                        "parameters": {
-                            "command": "pageManager",
-                            "action": "exportPDocFile",
-                            "backend": "../../../config/backend.dev.json",
-                            "exportName": "pdocs",
-                            "exportDir": "dist/static/myshpdev/de/assets/",
-                            "profiles": "profile_static",
-                            "langkeys": "lang_de"
-                        }
-                    },
-                    {
-                        "parameters": {
-                            "command": "pageManager",
-                            "action": "exportPDocViewerFile",
-                            "backend": "../../../config/backend.dev.json",
-                            "exportName": "static.myshppdocs",
-                            "exportDir": "dist/static/myshpdev/de/assets/staticdata/",
-                            "exportId": "assets/staticdata/static.myshppdocs.js",
-                            "profiles": "profile_static",
-                            "langkeys": "lang_de"
-                        }
-                    },
-                    {
-                        "parameters": {
-                            "command": "pageManager",
-                            "action": "exportPDocFile",
-                            "backend": "../../../config/backend.dev.json",
-                            "exportName": "pdocs",
-                            "exportDir": "dist/static/myshp/de/assets/",
-                            "profiles": "profile_static",
-                            "langkeys": "lang_de"
-                        }
-                    },
-                    {
-                        "parameters": {
-                            "command": "pageManager",
-                            "action": "exportPDocViewerFile",
-                            "backend": "../../../config/backend.dev.json",
-                            "exportName": "static.myshppdocs",
-                            "exportDir": "dist/static/myshp/de/assets/staticdata/",
-                            "exportId": "assets/staticdata/static.myshppdocs.js",
-                            "profiles": "profile_static",
-                            "langkeys": "lang_de"
+                            "srcFile": "../../../filestore/exports/favorites/favorites-top.html"
                         }
                     }
                 ]
             },
-            "generateSitemap": {
-                "description": "generate sitemaps",
+            "PUBLISH: dbPublish_prod_sqlite": {
+                "description": "publish mytbexportproddb sqlite",
                 "commands": [
                     {
                         "parameters": {
-                            "command": "generateSitemap",
-                            "action": "generateSitemap",
-                            "backend": "../../../config/backend.dev.json",
-                            "sitemap": "../../../config/sitemap-dev-de.json"
+                            "command": "dbPublish",
+                            "action": "publishDB",
+                            "publishConfigFile": "../../../config/dbpublish.json",
+                            "profile": "sqlite",
+                            "target": "mytbexportbetadb"
                         }
                     },
                     {
                         "parameters": {
-                            "command": "generateSitemap",
-                            "action": "generateSitemap",
-                            "backend": "../../../config/backend.dev.json",
-                            "sitemap": "../../../config/sitemap-dev-en.json"
+                            "command": "dbPublish",
+                            "action": "publishDB",
+                            "publishConfigFile": "../../../config/dbpublish.json",
+                            "profile": "sqlite",
+                            "target": "mytbexportproddb"
+                        }
+                    }
+                ]
+            },
+            "PUBLISH: solrPublish_prod_sqlite": {
+                "description": "publish solr mytbexportprod sqlite",
+                "commands": [
+                    {
+                        "parameters": {
+                            "command": "solrPublish",
+                            "action": "publishSolr",
+                            "publishConfigFile": "../../../config/dbpublish.json",
+                            "profile": "sqlite",
+                            "target": "mytbexportproddb"
+                        }
+                    }
+                ]
+            },
+            "PUBLISH: publish_prod_sqlite": {
+                "description": "publish mytbexportbeta+mytbexportprod sqlite",
+                "commands": [
+                    {
+                        "parameters": {
+                            "command": "dbPublish",
+                            "action": "publishDB",
+                            "publishConfigFile": "../../../config/dbpublish.json",
+                            "profile": "sqlite",
+                            "target": "mytbexportbetadb"
+                        }
+                    },
+                    {
+                        "parameters": {
+                            "command": "solrPublish",
+                            "action": "publishSolr",
+                            "publishConfigFile": "../../../config/dbpublish.json",
+                            "profile": "sqlite",
+                            "target": "mytbexportbetadb"
+                        }
+                    },
+                    {
+                        "parameters": {
+                            "command": "dbPublish",
+                            "action": "publishDB",
+                            "publishConfigFile": "../../../config/dbpublish.json",
+                            "profile": "sqlite",
+                            "target": "mytbexportproddb"
+                        }
+                    },
+                    {
+                        "parameters": {
+                            "command": "solrPublish",
+                            "action": "publishSolr",
+                            "publishConfigFile": "../../../config/dbpublish.json",
+                            "profile": "sqlite",
+                            "target": "mytbexportproddb"
                         }
                     }
                 ]
@@ -182,17 +349,32 @@
         },
         "constantParameters": {
             "overrides": "override this parameters from request",
+            "importDir": "notexists",
+            "exportDir": "notexists",
+            "exportName": "notexists",
             "outputDir": "notexists",
             "outputFile": "notexists",
+            "publishConfigFile": "notexists",
+            "migrationDbConfigFile": "notexists",
+            "migrationsDir": "notexists",
+            "additionalMappingsFile": "notexists",
+            "srcBaseUrl": "notexists",
+            "destBaseUrl": "notexists",
             "backend": "../../../config/backend.dev.json",
             "sitemap": "../../../config/sitemap-de.json"
         }
     },
+    "importDir": "notexists",
+    "exportDir": "notexists",
+    "exportName": "notexists",
     "outputDir": "notexists",
     "outputFile": "notexists",
+    "publishConfigFile": "notexists",
+    "srcBaseUrl": "notexists",
+    "destBaseUrl": "notexists",
     "backend": "../../../config/backend.dev.json",
     "sitemap": "../../../config/sitemap-de.json",
-    "port": 5190,
+    "port": 4490,
     "bindIp": "127.0.0.1",
     "corsOrigin": true
 }

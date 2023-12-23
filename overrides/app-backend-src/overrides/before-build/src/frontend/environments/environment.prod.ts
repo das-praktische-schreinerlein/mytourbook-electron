@@ -1,30 +1,41 @@
 import {AppEnvironment} from './app-environment';
-import {DataMode} from '../shared/commons/model/datamode.enum';
+import {DataMode} from '../shared/tdoc-commons/model/datamode.enum';
 
 export const environment: AppEnvironment = {
     production: true,
-    assetsPathVersionSnippet: '',
+    assetsPathVersionSnippet: '.v2',
     assetsPathVersionSuffix: '',
+    backendApiBaseUrl: 'http://localhost:4402/api/v1/',
+    tracksBaseUrl: 'http://localhost:4402/api/assets/tracks/',
+    audioBaseUrl: 'http://localhost:4402/api/static/audios/',
+    picsBaseUrl: 'http://localhost:4402/api/static/pictures/',
+    picsPreviewPathResolution: 'x300',
+    videoBaseUrl: 'http://localhost:4402/api/static/videos/',
+    defaultSearchTypes: 'route,location,track,trip,news',
+    emptyDefaultSearchTypes: 'route,location,track,trip,news,image,video,info',
+    useAssetStoreUrls: false,
+    useAudioAssetStoreUrls: false,
+    useVideoAssetStoreUrls: false,
     pdocWritable: false,
     pdocActionTagWritable: false,
     pdocEmptyDefaultSearchTypes: 'page',
-    defaultSearchTypes: '',
-    emptyDefaultSearchTypes: '',
-    useAssetStoreUrls: false,
-    allowAutoPlay: false,
-    backendApiBaseUrl: 'http://localhost:5102/api/v1/',
+    tdocWritable: false,
+    tdocActionTagWritable: false,
+    allowAutoPlay: true,
+    tdocMaxItemsPerAlbum: 20000,
+    m3uAvailable: true,
     cookieLawSeenName: 'cookieLawSeenV20180525',
-    trackingProviders: [], // Angulartics2Piwik
+    trackingProviders: [],
     hideInternalDescLinks: false,
     hideInternalImages: false,
     startDataMode: DataMode.BACKEND,
     availableDataModes: [DataMode.BACKEND]
 };
-
+if (console) {
 // unset logger
 console.trace = function() {};
 console.debug = function() {};
 console.log = function() {};
 console.warn = function() {};
 console.error = function() {};
-
+}

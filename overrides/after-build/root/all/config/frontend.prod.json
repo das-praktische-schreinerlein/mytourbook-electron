@@ -1,8 +1,8 @@
 {
     "profile": "prod",
-    "port": 5003,
+    "port": 4503,
     "bindIp": "127.0.0.1",
-    "cacheFolder": "../../../cache/myshpprod/",
+    "cacheFolder": "../../../cache/mytb/",
     "redirectFileJson": "../../../config/redirects.prod.json",
     "redirectOnlyCached": false
 }

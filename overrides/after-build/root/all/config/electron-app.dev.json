@@ -1,8 +1,8 @@
 {
-    "frontendStartUrl": "http://localhost:5001/myshpdev/de/",
-    "adminServerBackendCheckUrl": "http://localhost:5190/adminapi/v1/de/status",
-    "backendCheckUrl": "http://localhost:5100/api/v1/de/pages/",
-    "backendStaticBaseUrl": "http://localhost:5100/api/static/",
+    "frontendStartUrl": "http://localhost:4501/mytbdev/de/",
+    "adminServerBackendCheckUrl": "http://localhost:4490/adminapi/v1/de/status",
+    "backendCheckUrl": "http://localhost:4400/api/v1/de/tdocsearch?perPage=2&pageNum=1&type=track",
+    "backendStaticBaseUrl": "http://localhost:4400/api/static/",
     "adminServerBackendRequirePath": "../app-backend/dist/backend/adminServer",
     "backendRequirePath": "../app-backend/dist/backend/backend",
     "frontendServerRequirePath": "../app-backend/dist/frontendserver-dev-de/frontendserver",

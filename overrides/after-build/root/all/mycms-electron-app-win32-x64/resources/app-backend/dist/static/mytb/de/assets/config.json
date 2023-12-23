@@ -1,0 +1,843 @@
+{
+    "components": {
+        "tdoc-keywords": {
+            "editPrefix": "KW_",
+            "possiblePrefixes": ["KW_", "", "kw_"],
+            "structuredKeywords": [
+                {"name": "Todos",
+                    "keywords": ["TODOKEYWORDS", "TODOPOISTART", "TODOPOIMAIN", "TODOPOIEND", "TODOPOICHECK"]},
+                {"name": "Tourdauer",
+                    "keywords": [
+                        "Kurztour",
+                        "Mehrtagestour",
+                        "Tagestour"]},
+                {"name": "Aktivität",
+                    "keywords": [
+                        "Autofahrt",
+                        "Baden", "Besichtigung", "Bootfahren",
+                        "Campen",
+                        "Fliegen",
+                        "Gassi",
+                        "Kanu",
+                        "Museumsbesuch",
+                        "Radfahren",
+                        "Skaten", "Spaziergang","Stadtbesichtigung",
+                        "Wandern", "Wanderung"]},
+                {"name": "Bergsport",
+                    "keywords": [
+                        "Alpinklettern",
+                        "Boofen", "Bouldern",
+                        "Einseillängen",
+                        "Gletscherbegehung",
+                        "Hochtour",
+                        "Klettern", "Klettersteig",
+                        "Mehrseillängen",
+                        "Rodeln",
+                        "Sachsenklettern", "Schneeschuhwandern", "Skilanglauf", "Solotour", "Sportklettern",
+                        "Wildwasserschwimmen"]},
+                {"name": "Veranstaltung",
+                    "keywords": [
+                        "Ausstellung",
+                        "Konzert",
+                        "Messe",
+                        "Party"]},
+                {"name": "Kultur",
+                    "keywords": [
+                        "Architektur",
+                        "Burg",
+                        "Denkmal", "Dom",
+                        "Geschichte",
+                        "Kirche", "Kunst",
+                        "Museum",
+                        "Park",
+                        "Schloss",
+                        "Technik",
+                        "Zoo"]},
+                {"name": "Landschaft",
+                    "keywords": [
+                        "Dorf",
+                        "Kulturlandschaft",
+                        "Landschaft",
+                        "Natur", "Naturlandschaft",
+                        "Stadt"
+                    ]},
+                {"name": "Leben",
+                    "keywords": [
+                        "Bäume", "Blumen",
+                        "Fische",
+                        "Menschen",
+                        "Tiere"]},
+                {"name": "Flachland",
+                    "keywords": [
+                        "Aue",
+                        "Feld",
+                        "Heide",
+                        "Steppe",
+                        "Wald", "Wiese"
+                    ]},
+                {"name": "Gebirge",
+                    "keywords": [
+                        "Alm",
+                        "Berge",
+                        "Felsen", "Felswand", "Firn",
+                        "Gletscherschau",
+                        "Hochgebirge",
+                        "Höhle",
+                        "Mittelgebirge",
+                        "Schlucht", "Schneefelder",
+                        "Tal"
+                    ]},
+                {"name": "Wasser",
+                    "keywords": [
+                        "Bach",
+                        "Fluss",
+                        "Meer", "Moor",
+                        "Ozean",
+                        "Sandstrand", "See", "Seenlandschaft", "Steilküste", "Steinstrand",
+                        "Teich",
+                        "Wasserfall"
+                    ]},
+                {"name": "Location",
+                    "keywords": [
+                        "Garten",
+                        "Halle",
+                        "Indoor",
+                        "Wohnung",
+                        "Zimmer"
+                    ]},
+                {"name": "Jahreszeit",
+                    "keywords": [
+                        "Frühling",
+                        "Herbst",
+                        "Sommer",
+                        "Winter"
+                    ]},
+                {"name": "Wetter",
+                    "keywords": [
+                        "bedeckt",
+                        "Eis",
+                        "heiter",
+                        "Mond",
+                        "Nacht",
+                        "Regen", "Regenbogen",
+                        "Schnee", "Sonne", "Sonnenaufgang", "Sonnenuntergang", "sonnig", "Sterne"
+                    ]},
+                {"name": "POI",
+                    "filters": [{ "property": "type", "command": "CSVIN", "expectedValues": ["POI"]}],
+                    "keywords": [
+                        "SOURCE_mytb",
+                        "SOURCE_openstreetmap",
+                        "SOURCE_GeoJson",
+
+                        "aerialway_station",
+                        "amenity_alp",
+                        "amenity_bar",
+                        "amenity_bbq",
+                        "amenity_bench",
+                        "amenity_biergarten",
+                        "amenity_boat_rental",
+                        "amenity_cafe",
+                        "amenity_clubhouse",
+                        "amenity_drinking_water",
+                        "amenity_exhibition_centre",
+                        "amenity_fast_food",
+                        "amenity_fast_foodtoilets",
+                        "amenity_fountain",
+                        "amenity_grave_yard",
+                        "amenity_hunting_stand",
+                        "amenity_internet_access_yes",
+                        "amenity_mountain_rescue",
+                        "amenity_peak",
+                        "amenity_place_of_worship",
+                        "amenity_pub",
+                        "amenity_public_bath",
+                        "amenity_restaurant",
+                        "amenity_restaurantbar",
+                        "amenity_restaurantcafe",
+                        "amenity_shelter",
+                        "amenity_ski_school",
+                        "amenity_toilets",
+                        "amenity_townhall",
+                        "amenity_watering_place",
+                        "climbing_crag",
+                        "climbing_no",
+                        "climbing_prohibited",
+                        "climbing_route_bottom",
+                        "climbing_route_top",
+                        "climbing_sport_climbing",
+                        "climbing_trad_climbing",
+                        "climbing_yes",
+                        "condition_dormant",
+                        "man_made_adit",
+                        "man_made_antenna",
+                        "man_made_beacon",
+                        "man_made_borderstone",
+                        "man_made_boundary_stone",
+                        "man_made_cairn",
+                        "man_made_campanile",
+                        "man_made_cross",
+                        "man_made_flagpole",
+                        "man_made_guy_wire",
+                        "man_made_mast",
+                        "man_made_pole",
+                        "man_made_reservoir",
+                        "man_made_reservoir_covered",
+                        "man_made_summit",
+                        "man_made_summit_cross",
+                        "man_made_survey_point",
+                        "man_made_survey_pointcairn",
+                        "man_made_tower",
+                        "man_made_water_works",
+                        "man_made_wayside_cross",
+                        "man_made_yes",
+                        "mountain_pass_no",
+                        "mountain_pass_yes",
+                        "natural_cave_entrance",
+                        "natural_col",
+                        "natural_glacier",
+                        "natural_pass",
+                        "natural_peak",
+                        "natural_rock",
+                        "natural_saddle",
+                        "natural_water",
+                        "place_city",
+                        "place_hamlet",
+                        "place_isolated_dwelling",
+                        "place_locality",
+                        "place_suburb",
+                        "place_town",
+                        "place_village",
+                        "place_yes",
+                        "sport_climbing",
+                        "sport_free_flying",
+                        "sport_ice_skating",
+                        "sport_no",
+                        "sport_scuba_diving",
+                        "sport_skiing",
+                        "sport_swimming",
+                        "sport_swimmingfishing",
+                        "sport_swimmingscuba_diving",
+                        "sport_yoga",
+                        "surface_asphalt",
+                        "surface_concrete",
+                        "surface_ground",
+                        "surface_scree",
+                        "surface_wood",
+                        "tourism_alpine_hut",
+                        "tourism_artwork",
+                        "tourism_attraction",
+                        "tourism_information",
+                        "tourism_Luftkurort",
+                        "tourism_picnic_site",
+                        "tourism_pointview",
+                        "tourism_register",
+                        "tourism_viewpoint",
+                        "tourism_viewpointguestbook",
+                        "tourism_viewpointpicnic_site",
+                        "tourism_yes"
+                    ]}
+            ],
+            "keywordSuggestions": [
+                {   "name": "Action Rad-Tour",
+                    "keywords": ["Radfahren"],
+                    "filters": [{ "property": "subtype", "command": "CSVIN", "expectedValues": ["1"]}]
+                },
+                {   "name": "Action Skating-Tour",
+                    "keywords": ["Skaten"],
+                    "filters": [{ "property": "subtype", "command": "CSVIN", "expectedValues": ["2"]}]
+                },
+                {   "name": "Action Kletter-Tour",
+                    "keywords": [
+                        "Berge",
+                        "Felsen",
+                        "Gebirge",
+                        "Klettern",
+                        "Landschaft",
+                        "Natur", "Naturlandschaft"
+                    ],
+                    "filters": [{ "property": "subtype", "command": "CSVIN", "expectedValues": ["3"]}]
+                },
+                {   "name": "Action Boots-Tour",
+                    "keywords": [
+                        "Bootfahren",
+                        "Landschaft",
+                        "Natur", "Naturlandschaft",
+                        "See"
+                    ],
+                    "filters": [{ "property": "subtype", "command": "CSVIN", "expectedValues": ["4"]}]
+                },
+                {   "name": "Action Baden",
+                    "keywords": [
+                        "Baden",
+                        "Landschaft",
+                        "Natur", "Naturlandschaft",
+                        "See",
+                        "Wildwasserschwimmen"
+                    ],
+                    "filters": [{ "property": "subtype", "command": "CSVIN", "expectedValues": ["5", "6"]}]
+                },
+                {   "name": "Action Wildwasserschwimmen",
+                    "keywords": [
+                        "Baden",
+                        "Landschaft",
+                        "Natur", "Naturlandschaft",
+                        "See",
+                        "Wildwasserschwimmen"
+                    ],
+                    "filters": [{ "property": "subtype", "command": "CSVIN", "expectedValues": ["5", "6"]}]
+                },
+                {   "name": "Action Stadtbesichtigung",
+                    "keywords": [
+                        "Stadt", "Stadtbesichtigung"
+                    ],
+                    "filters": [{ "property": "subtype", "command": "CSVIN", "expectedValues": ["101"]}]
+                },
+                {   "name": "Action Stadtbummel",
+                    "keywords": ["Stadtbummel", "Stadt"],
+                    "filters": [{ "property": "subtype", "command": "CSVIN", "expectedValues": ["102"]}]
+                },
+                {   "name": "Action Museumsbesichtigung",
+                    "keywords": [
+                        "Museum", "Museumsbesichtigung",
+                        "Stadt"
+                    ],
+                    "filters": [{ "property": "subtype", "command": "CSVIN", "expectedValues": ["103"]}]
+                },
+                {   "name": "Action Zoo-Besuch",
+                    "keywords": [
+                        "Stadt",
+                        "Zoo"
+                    ],
+                    "filters": [{ "property": "subtype", "command": "CSVIN", "expectedValues": ["104"]}]
+                },
+                {   "name": "Action Park-Besuch",
+                    "keywords": [
+                        "Park",
+                        "Stadt"
+                    ],
+                    "filters": [{ "property": "subtype", "command": "CSVIN", "expectedValues": ["105"]}]
+                },
+                {   "name": "Action Autofahrt",
+                    "keywords": ["Autofahrt"],
+                    "filters": [{ "property": "subtype", "command": "CSVIN", "expectedValues": ["106"]}]
+                },
+                {   "name": "Action Spaziergang",
+                    "keywords": ["Spaziergang"],
+                    "filters": [{ "property": "subtype", "command": "CSVIN", "expectedValues": ["110"]}]
+                },
+                {   "name": "Action Gassi-Runde",
+                    "keywords": ["Gassi"],
+                    "filters": [{ "property": "subtype", "command": "CSVIN", "expectedValues": ["111"]}]
+                },
+                {   "name": "Action Wanderung",
+                    "keywords": [
+                        "Landschaft",
+                        "Natur", "Naturlandschaft",
+                        "Wanderung"
+                    ],
+                    "filters": [{ "property": "subtype", "command": "CSVIN", "expectedValues": ["120"]}]
+                },
+                {   "name": "Action Berg-Wanderung",
+                    "keywords": [
+                        "Berge",
+                        "Gebirge",
+                        "Landschaft",
+                        "Natur", "Naturlandschaft",
+                        "Wandern"
+                    ],
+                    "filters": [{ "property": "subtype", "command": "CSVIN", "expectedValues": ["121"]}]
+                },
+                {   "name": "Action Berg-Tour",
+                    "keywords": ["Wandern",
+                        "Berge",
+                        "Gebirge",
+                        "KLettern",
+                        "Landschaft",
+                        "Natur", "Naturlandschaft"
+                    ],
+                    "filters": [{ "property": "subtype", "command": "CSVIN", "expectedValues": ["122"]}]
+                },
+                {   "name": "Action Klettersteig-Tour",
+                    "keywords": [
+                        "Berge",
+                        "Felsen",
+                        "Gebirge",
+                        "Klettersteig",
+                        "Landschaft",
+                        "Natur", "Naturlandschaft"
+                    ],
+                    "filters": [{ "property": "subtype", "command": "CSVIN", "expectedValues": ["123"]}]
+                },
+                {   "name": "Action Schneeschuh-Tour",
+                    "keywords": [
+                        "Berge",
+                        "Gebirge",
+                        "Landschaft",
+                        "Natur", "Naturlandschaft",
+                        "Schnee",
+                        "Schneeschuhwandern",
+                        "Winter"
+                    ],
+                    "filters": [{ "property": "subtype", "command": "CSVIN", "expectedValues": ["124"]}]
+                },
+                {   "name": "Action kombinierte Berg-Tour",
+                    "keywords": [
+                        "Berge",
+                        "Felsen",
+                        "Gebirge",
+                        "Gletscherbegehung", "Gletscherschau",
+                        "Landschaft",
+                        "Natur", "Naturlandschaft"
+                    ],
+                    "filters": [{ "property": "subtype", "command": "CSVIN", "expectedValues": ["125"]}]
+                },
+                {   "name": "Action Hochtour",
+                    "keywords": [
+                        "Berge",
+                        "Gebirge",
+                        "Hochtour",
+                        "Landschaft",
+                        "Gletscherbegehung", "Gletscherschau",
+                        "Natur", "Naturlandschaft"
+                    ],
+                    "filters": [{ "property": "subtype", "command": "CSVIN", "expectedValues": ["126"]}]
+                },
+                {   "name": "Action Alpinklettern",
+                    "keywords": [
+                        "Alpinklettern",
+                        "Berge",
+                        "Felsen",
+                        "Gebirge",
+                        "Klettern",
+                        "Landschaft",
+                        "Natur", "Naturlandschaft"
+                    ],
+                    "filters": [{ "property": "subtype", "command": "CSVIN", "expectedValues": ["127"]}]
+                },
+                {   "name": "Action Sachsenklettern",
+                    "keywords": [
+                        "Berge",
+                        "Felsen",
+                        "Gebirge",
+                        "Klettern",
+                        "Landschaft",
+                        "Natur", "Naturlandschaft",
+                        "Sachsenklettern"
+                    ],
+                    "filters": [{ "property": "subtype", "command": "CSVIN", "expectedValues": ["128"]}]
+                },
+                {   "name": "Action Sportklettern",
+                    "keywords": [
+                        "Berge",
+                        "Felsen",
+                        "Gebirge",
+                        "Klettern",
+                        "Landschaft",
+                        "Natur", "Naturlandschaft",
+                        "Sportklettern"
+                    ],
+                    "filters": [{ "property": "subtype", "command": "CSVIN", "expectedValues": ["129"]}]
+                },
+                {   "name": "Action Biwak",
+                    "keywords": [
+                        "Berge",
+                        "Biwak",
+                        "Boofen",
+                        "Felsen",
+                        "Gebirge",
+                        "Höhle",
+                        "Landschaft",
+                        "Natur", "Naturlandschaft",
+                        "Unterkunft"
+                    ],
+                    "filters": [{ "property": "subtype", "command": "CSVIN", "expectedValues": ["130"]}]
+                },
+                {   "name": "Action Unterkunft",
+                    "keywords": ["Unterkunft"],
+                    "filters": [{ "property": "subtype", "command": "CSVIN", "expectedValues": ["131"]}]
+                },
+                {   "name": "Action Höhlenbegehung",
+                    "keywords": [
+                        "Berge",
+                        "Gebirge",
+                        "Höhle", "Höhlenbegehung",
+                        "Landschaft",
+                        "Natur", "Naturlandschaft"
+                    ],
+                    "filters": [{ "property": "subtype", "command": "CSVIN", "expectedValues": ["132"]}]
+                },
+                {   "name": "Action Skilanglauf-Tour",
+                    "keywords": [
+                        "Berge",
+                        "Gebirge",
+                        "Landschaft",
+                        "Natur", "Naturlandschaft",
+                        "Schnee",
+                        "Skilanglauf",
+                        "Winter"
+                    ],
+                    "filters": [{ "property": "subtype", "command": "CSVIN", "expectedValues": ["135"]}]
+                },
+                {   "name": "Action Rodel-Tour",
+                    "keywords": [
+                        "Berge",
+                        "Gebirge",
+                        "Landschaft",
+                        "Natur", "Naturlandschaft",
+                        "Schnee",
+                        "Rodeln",
+                        "Winter"
+                    ],
+                    "filters": [{ "property": "subtype", "command": "CSVIN", "expectedValues": ["136"]}]
+                },
+                {   "name": "Daten Hochgebirge",
+                    "keywords": [
+                        "Berge",
+                        "Hochgebirge",
+                        "Landschaft",
+                        "Natur", "Naturlandschaft"
+                    ],
+                    "filters": [{ "property": "tdocdatatech_altMax", "command": "GE", "expectedValues": [1500]}]
+                },
+                {   "name": "Daten Mittelgebirge",
+                    "keywords": [
+                        "Berge",
+                        "Landschaft",
+                        "Mittelgebirge",
+                        "Natur", "Naturlandschaft"
+                    ],
+                    "filters": [{ "property": "tdocdatatech_altMax", "command": "GE", "expectedValues": [500]},
+                        { "property": "tdocdatatech_altMax", "command": "LE", "expectedValues": [1500]}]
+                }
+            ],
+            "blacklist": ["TODOKEYWORDS", "OFFEN", "Mom", "Pa", "Micha"]
+        },
+        "tdoc-persontags": {
+            "editPrefix": "",
+            "possiblePrefixes": ["KW_", "", "kw_", "Pers_"],
+            "structuredKeywords": [
+                {"name": "mit Freunden",
+                    "keywords": ["Freund1", "Freund2"]},
+                {"name": "mit Familie",
+                    "keywords": ["Micha", "Ich", "Frau", "Mann"]},
+                {"name": "mit Hundis",
+                    "keywords": ["Harry", "Buddy"]}
+            ],
+            "keywordSuggestions": [
+                {   "name": "Personen Klettern",
+                    "keywords": ["Freund1"],
+                    "filters": [{ "property": "subtype", "command": "CSVIN", "expectedValues": ["128"]}]
+                },
+                {   "name": "Hunde Gassi",
+                    "keywords": ["Buddy"],
+                    "filters": [{ "property": "subtype", "command": "CSVIN", "expectedValues": ["111"]}]
+                }
+            ],
+            "blacklist": ["OFFEN", "Mom", "Pa", "Micha"]
+        },
+        "tdoc-actions": {
+            "actionTags": [
+                {
+                    "key": "local_album_current",
+                    "type": "albumtag",
+                    "name": "\u2764 local Album",
+                    "shortName": "&#x2764",
+                    "payload": {
+                        "albumkey": "Current"
+                    },
+                    "showFilter": [
+                        {
+                            "property": "localalbum",
+                            "command": "CSVIN",
+                            "expectedValues": ["Current"]
+                        }
+                    ],
+                    "recordAvailability": [
+                        {
+                            "property": "type",
+                            "command": "CSVIN",
+                            "expectedValues": ["IMAGE", "image", "VIDEO", "video", "LOCATION", "location", "TRACK", "track", "ROUTE", "route", "TRIP", "trip", "NEWS", "news", "INFO", "info"]
+                        }
+                    ],
+                    "configAvailability": [
+                    ]
+                },
+                {
+                    "key": "link_download_image_store",
+                    "type": "link",
+                    "name": "Download Image Store",
+                    "shortName": "\uD83D\uDCE5",
+                    "payload": {
+                        "url": "http://localhost:4402/api/static/picturestore/x600/{{id}}",
+                        "target": "download",
+                        "replacements": {
+                            "id": "record.id"
+                        }
+                    },
+                    "showFilter": [
+                        {
+                            "property": "type",
+                            "command": "CSVIN",
+                            "expectedValues": ["show_only_on_popup"]
+                        }
+                    ],
+                    "recordAvailability": [
+                        {
+                            "property": "type",
+                            "command": "CSVIN",
+                            "expectedValues": ["IMAGE", "image"]
+                        }
+                    ],
+                    "configAvailability": [
+                    ]
+                },
+                {
+                    "key": "link_download_image_static",
+                    "type": "link",
+                    "name": "Download Image Store",
+                    "shortName": "\uD83D\uDCE5",
+                    "payload": {
+                        "url": "http://localhost:4402/api/static/pictures/pics_x600/{{id}}",
+                        "target": "download",
+                        "replacements": {
+                            "id": "record.tdocimages[0].fileName"
+                        }
+                    },
+                    "showFilter": [
+                        {
+                            "property": "type",
+                            "command": "CSVIN",
+                            "expectedValues": ["show_only_on_popup"]
+                        }
+                    ],
+                    "recordAvailability": [
+                        {
+                            "property": "type",
+                            "command": "CSVIN",
+                            "expectedValues": ["IMAGE", "image"]
+                        }
+                    ],
+                    "configAvailability": [
+                    ]
+                },
+                {
+                    "key": "link_download_video_static",
+                    "type": "link",
+                    "name": "Download Video Store",
+                    "shortName": "\uD83D\uDCE5",
+                    "payload": {
+                        "url": "http://localhost:4402/api/static/videos/video_x600/{{id}}",
+                        "target": "download",
+                        "replacements": {
+                            "id": "record.tdocvideos[0].fileName"
+                        }
+                    },
+                    "showFilter": [
+                        {
+                            "property": "type",
+                            "command": "CSVIN",
+                            "expectedValues": ["show_only_on_popup"]
+                        }
+                    ],
+                    "recordAvailability": [
+                        {
+                            "property": "type",
+                            "command": "CSVIN",
+                            "expectedValues": ["VIDEO", "video"]
+                        }
+                    ],
+                    "configAvailability": [
+                    ]
+                }
+            ]
+        },
+        "tdoc-multiactionheader": {
+            "actionTags": [
+                {
+                    "key": "link_download_image",
+                    "type": "link",
+                    "name": "Download Image",
+                    "shortName": "\uD83D\uDCE5",
+                    "payload": {
+                        "url": "http://localhost:4402/api/static/picturestore/x600/{{id}}",
+                        "target": "download",
+                        "replacements": {
+                            "id": "record.id"
+                        }
+                    },
+                    "showFilter": [
+                    ],
+                    "recordAvailability": [
+                        {
+                            "property": "type",
+                            "command": "CSVIN",
+                            "expectedValues": ["IMAGE", "image"]
+                        }
+                    ],
+                    "configAvailability": [
+                    ]
+                },
+                {
+                    "key": "local_album_current",
+                    "type": "albumtag",
+                    "name": "\u2764 set local Album",
+                    "shortName": "&#x2764",
+                    "payload": {
+                        "albumkey": "Current",
+                        "set": true
+                    },
+                    "showFilter": [
+                    ],
+                    "profileAvailability": [
+                        {
+                            "property": "type",
+                            "command": "NEQ",
+                            "expectedValues": ["albumpage"]
+                        }
+                    ],
+                    "recordAvailability": [
+                        {
+                            "property": "type",
+                            "command": "CSVIN",
+                            "expectedValues": ["IMAGE", "image", "VIDEO", "video", "LOCATION", "location", "TRACK", "track", "ROUTE", "route", "TRIP", "trip", "NEWS", "news", "INFO", "info"]
+                        }
+                    ],
+                    "configAvailability": [
+                        {
+                            "property": "tdocMaxItemsPerAlbum",
+                            "command": "GE",
+                            "expectedValues": [10]
+                        }
+                    ]
+                },
+                {
+                    "key": "unset_local_album_current",
+                    "type": "albumtag",
+                    "name": "\uD83D\uDC94 unset local Album",
+                    "shortName": "&#x2764",
+                    "payload": {
+                        "albumkey": "Current",
+                        "set": false
+                    },
+                    "showFilter": [
+                    ],
+                    "profileAvailability": [
+                    ],
+                    "recordAvailability": [
+                        {
+                            "property": "type",
+                            "command": "CSVIN",
+                            "expectedValues": ["IMAGE", "image", "VIDEO", "video", "LOCATION", "location", "TRACK", "track", "ROUTE", "route", "TRIP", "trip", "NEWS", "news", "INFO", "info"]
+                        }
+                    ],
+                    "configAvailability": [
+                        {
+                            "property": "tdocMaxItemsPerAlbum",
+                            "command": "GE",
+                            "expectedValues": [10]
+                        }
+                    ]
+                }
+            ]
+        },
+        "tdoc-showpage": {
+            "showBigImages": true,
+            "allowedQueryParams": ["showIMAGE", "showVIDEO", "showLOCATION", "showNEWS", "showROUTE", "showTOPIMAGE", "showTRACK", "showTRIP"],
+            "availableTabs": {
+                "IMAGE": true,
+                "IMAGE_FAVORITES": true,
+                "IMAGE_NEARBY": true,
+                "INFO": true,
+                "DESTINATION": true,
+                "ROUTE": true,
+                "ROUTE_NEARBY": true,
+                "TRACK": true,
+                "LOCATION": true,
+                "LOCATION_NEARBY": true,
+                "TRIP": true,
+                "NEWS": true,
+                "PLAYLIST": true,
+                "VIDEO": true,
+                "POI": true,
+                "POI_NEARBY": true
+            }
+        },
+        "tdoc-albumpage": {
+            "allowAutoplay": true,
+            "m3uAvailable": true
+        },
+        "cdoc-listheader": {
+            "allowAutoplay": true
+        },
+        "tdoc-listheader": {
+            "allowAutoplay": true
+        },
+        "pdoc-sectionpage": {
+            "pageContainerOrder": [
+                "contentContainer",
+                "searchHintContainer",
+                "newsContainer",
+                "sectionsContainer",
+                "topTenContainer",
+                "dashBoardContainer",
+                "adminAreaContainer",
+                "tagcloudContainer",
+                "statisticBoardContainer"
+            ],
+            "bestMatchingTabsOrder": [
+                "ROUTE",
+                "DESTINATION",
+                "LOCATION",
+                "IMAGE",
+                "TRACK",
+                "TRIP",
+                "VIDEO",
+                "INFO",
+                "PLAYLIST",
+                "POI",
+                "ALL"
+            ],
+            "favoritesTabsOrder": [
+                "IMAGE",
+                "ROUTE",
+                "DESTINATION",
+                "TRACK",
+                "VIDEO",
+                "ALL"
+            ],
+            "availableTabs": {
+                "DESTINATION": true,
+                "IMAGE": true,
+                "INFO": true,
+                "ROUTE": true,
+                "TRACK": true,
+                "LOCATION": true,
+                "TRIP": true,
+                "PLAYLIST": true,
+                "POI": true,
+                "VIDEO": true
+            }
+        },
+        "cdoc-extended-object-properties":  {
+            "allowedExtendedObjectProperties": {
+                "list-item-flat-big": ["IMAGE_COUNT", "IMAGE_TOP_COUNT", "IMAGE_FAV_COUNT", "VIDEO_COUNT", "ADDITIONAL_ROUTE_COUNT", "TRACK_COUNT", "ROUTE_COUNT", "TRIP_COUNT", "NEWS_COUNT", "INFO_COUNT", "LOCATION_COUNT", "POI_COUNT"],
+                "show-big": ["IMAGE_COUNT", "IMAGE_TOP_COUNT", "IMAGE_FAV_COUNT", "VIDEO_COUNT", "ADDITIONAL_ROUTE_COUNT", "TRACK_COUNT", "ROUTE_COUNT", "TRIP_COUNT", "NEWS_COUNT", "INFO_COUNT", "LOCATION_COUNT", "POI_COUNT"]
+            },
+            "modes": {
+                "list-item-flat-big": "short",
+                "show-big": "long"
+            }
+        }
+    },
+    "services": {
+        "seo": {
+            "tdocIndexableTypes": ["INFO", "ROUTE", "LOCATION", "NEWS"]
+        },
+        "serverItemExport": {
+            "maxAllowedM3UItems": 1000
+        },
+        "global": {
+            "TODO set this to hide: hideCopyrightFooter": true
+        }
+    }
+}

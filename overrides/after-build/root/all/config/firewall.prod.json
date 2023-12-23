@@ -16,6 +16,30 @@
             "pattern": "/api/v1/de/pages/.+",
             "file": "pdoc.json"
         },
+        "tdocsearch_de": {
+            "pattern": "/api/v1/de/tdocsearch.*",
+            "file": "tdocsearch.json"
+        },
+        "tdocsearch_en": {
+            "pattern": "/api/v1/en/tdocsearch.*",
+            "file": "tdocsearch.json"
+        },
+        "tdoc_de": {
+            "pattern": "/api/v1/de/tdoc/$",
+            "file": "tdocsearch.json"
+        },
+        "tdoc_en": {
+            "pattern": "/api/v1/de/tdoc/$",
+            "file": "tdocsearch.json"
+        },
+        "tdoc_params_de": {
+            "pattern": "/api/v1/de/tdoc/.+",
+            "file": "tdoc.json"
+        },
+        "tdoc_params_en": {
+            "pattern": "/api/v1/de/tdoc/.+",
+            "file": "tdoc.json"
+        },
         "tracks": {
             "pattern": "/tracks/.*",
             "file": "track.gpx"

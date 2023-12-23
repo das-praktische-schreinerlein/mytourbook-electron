@@ -1,24 +1,61 @@
 {
     "profile": "dev",
     "filePathPDocJson": "../../../config/pdocs.json",
+    "filePathThemeFilterJson": "../../../config/themeFilterConfig.json",
+    "apiVideoServerEnabled": true,
+    "apiAnonymizeMedia": false,
+    "apiRouteTracks": "/tracks/",
+    "apiRoutePictures": "/pictures/",
+    "apiRouteVideos": "/videos/",
+    "apiRouteTracksStaticDir": "../../../filestore/tracks/",
+    "apiRouteTracksStaticEnabled": true,
+    "apiRoutePicturesStaticDir": "../../../filestore/media/",
+    "apiRoutePicturesStaticEnabled": true,
+    "apiRouteVideosStaticDir": "../../../filestore/media/",
+    "apiRouteVideosStaticEnabled": true,
+    "apiRouteStoredTracks": "/trackstore/",
+    "apiRouteStoredPictures": "/picturestore/",
+    "apiRouteStoredPicturesResolutionPrefix": "pics_",
+    "apiRouteStoredVideos": "/videostore/",
+    "apiRouteStoredVideosResolutionPrefix": "video_",
+    "playlistExportAudioBaseUrl": "http://localhost:4400/api/static/audios/",
+    "playlistExportImageBaseUrl": "http://localhost:4400/api/static/pictures/",
+    "playlistExportVideoBaseUrl": "http://localhost:4400/api/static/videos/",
+    "playlistExportUseAudioAssetStoreUrls": false,
+    "playlistExportUseImageAssetStoreUrls": true,
+    "playlistExportUseVideoAssetStoreUrls": false,
+    "playlistExportMaxM3uRecordAllowed": 10000,
+    "imageMagicAppPath": "../../../contrib/imagemagic/",
     "nodejsBinaryPath": "..\\..\\..\\sbin\\node-cli.bat",
     "inlineJsPath": "dist/backend/create-allinone-html.js",
-    "startPDocApi": true,
-    "pdocDataStoreAdapter": "PDocSqlAdapter",
-    "pdocWritable": true,
-    "PDocSqlAdapter": {
+    "tdocDataStoreAdapter": "TourDocSqlMytbDbAdapter",
+    "tdocWritable": true,
+    "mapperConfig": {
+        "allowedKeywordPatterns": ["KW_.*", "TODO.*","Harry", "Booga", "Buddy", "Micha", ".*"],
+        "replaceKeywordPatterns": []
+    },
+    "TourDocSqlMytbDbAdapter": {
         "client": "sqlite3",
         "connection": {
-            "filename": "../../../database/myshp.dev.sqlite"
+            "filename": "../../../database/mytbdb.dev.sqlite"
         },
         "facetCacheUsage": {
             "active": false,
             "entities": {
+                "image": {
+                    "facetKeyPatterns": [".*"]
+                },
+                "odimgobject": {
+                    "facetKeyPatterns": [".*"]
+                },
+                "poi": {
+                    "facetKeyPatterns": [".*"]
+                }
             }
         },
         "facetCacheConfig": {
             "datastore": {
-                "scriptPath": "node_modules/@dps/mycms-commons/dist/facetcache-commons/model/db/sqlite3"
+                "scriptPath": "installer/db/sqlite/facetcache"
             },
             "facets": [
             ],
@@ -27,7 +64,7 @@
     },
     "cacheConfig": {
     },
-    "port": 5100,
+    "port": 4400,
     "bindIp": "127.0.0.1",
     "corsOrigin": true
 }

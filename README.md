@@ -1,6 +1,8 @@
-# MySimpleHomePage-Electron-App
+# MyTourbook-Electron-App
 
-MySimpleHomePage-Electron-App is a simple starter for your electron-application.
+MyTourbook-Electron-App is a electron-application for managing and publishing tracks and images from your trips.
+It's the software-stack behind the new portal-version [www.michas-ausflugstipps.de](http://www.michas-ausflugstipps.de/mytb/de/).
+It's based on mytourbook and mysimplehomepage-electron.
 
 **But be aware: it start's a local server with default-passwords!!!!!**
 

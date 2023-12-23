@@ -1,10 +1,44 @@
 {
     "profile": "prod",
     "filePathPDocJson": "../../../config/pdocs.json",
-    "startPDocApi": false,
+    "filePathThemeFilterJson": "../../../config/themeFilterConfig.json",
+    "apiVideoServerEnabled": true,
+    "apiAnonymizeMedia": false,
+    "apiRouteTracks": "/tracks/",
+    "apiRoutePictures": "/pictures/",
+    "apiRouteVideos": "/videos/",
+    "apiRouteTracksStaticDir": "../../../filestore/tracks/",
+    "apiRouteTracksStaticEnabled": true,
+    "apiRoutePicturesStaticDir": "../../../filestore/media/",
+    "apiRoutePicturesStaticEnabled": true,
+    "apiRouteVideosStaticDir": "../../../filestore/media/",
+    "apiRouteVideosStaticEnabled": true,
+    "apiRouteStoredTracks": "/trackstore/",
+    "apiRouteStoredPictures": "/picturestore/",
+    "apiRouteStoredPicturesResolutionPrefix": "pics_",
+    "apiRouteStoredVideos": "/videostore/",
+    "apiRouteStoredVideosResolutionPrefix": "video_",
+    "playlistExportAudioBaseUrl": "http://localhost:4402/api/static/audios/",
+    "playlistExportImageBaseUrl": "http://localhost:4402/api/static/pictures/",
+    "playlistExportVideoBaseUrl": "http://localhost:4402/api/static/videos/",
+    "playlistExportUseAudioAssetStoreUrls": false,
+    "playlistExportUseImageAssetStoreUrls": true,
+    "playlistExportUseVideoAssetStoreUrls": false,
+    "playlistExportMaxM3uRecordAllowed": 10000,
+    "tdocDataStoreAdapter": "TourDocSolrAdapter",
+    "tdocWritable": false,
+    "mapperConfig": {
+        "allowedKeywordPatterns": ["KW_.*", "Harry", "Booga", "Buddy", "Micha"],
+        "replaceKeywordPatterns": []
+    },
+    "TourDocSolrAdapter": {
+        "solrCoreTourDoc": "http://localhost:9999/solr/coremytbprod/",
+        "solrCoreTourDocReadUsername": "mytbread",
+        "solrCoreTourDocReadPassword": "SolrRocks"
+    },
     "cacheConfig": {
     },
-    "port": 5102,
+    "port": 4402,
     "bindIp": "127.0.0.1",
     "corsOrigin": true
 }

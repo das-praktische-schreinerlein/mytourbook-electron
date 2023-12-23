@@ -1,7 +1,7 @@
 {
     "fileDir": "dist/",
-    "sitemapBaseUrl": "http://localhost:5001/myshpdev/en/",
-    "showBaseUrl": "http://localhost:5001/myshpdev/en/",
+    "sitemapBaseUrl": "http://localhost:5001/mytbdev/en/",
+    "showBaseUrl": "http://localhost:5001/mytbdev/en/",
     "locale": "en",
     "perPage": 999,
     "mdocSearchForm": {
