@@ -2,7 +2,7 @@
  
 # Versions
 
-## 1.0.0
+## 1.0.0 (2023-12-27)
 - initial version bases on mysimplehomepage-electron 2.0.0 and mytourbook 8.0.0
 
 ### new features
