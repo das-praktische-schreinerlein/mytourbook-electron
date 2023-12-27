@@ -37,7 +37,6 @@
   "optionalDeps // do copy these to deps if needed": {
     "db-migrate-mysql": "2.2.0",
     "mysql": "2.18.1",
-    "redis": "3.1.2",
     "sqlite3": "5.0.0 -- dont upgrade because newer versions are not running with electron 9.4.1"
   },
   "dependencies": {
@@ -50,6 +49,7 @@
     "knex": "0.20.10",
     "lz-string": "1.5.0",
     "minimist": "1.2.8",
+    "redis": "3.1.2",
     "sqlite3": "5.0.0",
     "vid-streamer": "1.0.0"
   },

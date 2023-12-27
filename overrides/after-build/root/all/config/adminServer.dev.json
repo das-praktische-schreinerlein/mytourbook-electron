@@ -104,7 +104,7 @@
                 ]
             },
             "POIIMPORT: importDataFromPoiDatabase": {
-                "description": "import data from poi-database: poi-import/poi_import.geojson",
+                "description": "import data from poi-database: filestore/poi-import/poi_import.geojson",
                 "commands": [
                     {
                         "parameters": {
