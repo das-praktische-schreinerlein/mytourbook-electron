@@ -9,6 +9,7 @@
     "apiRouteVideos": "/videos/",
     "apiRouteTracksStaticDir": "../../../filestore/tracks/",
     "apiRouteTracksStaticEnabled": true,
+    "apiRoutePdfsStaticDir": "../../../filestore/pdfs/",
     "apiRoutePicturesStaticDir": "../../../filestore/media/",
     "apiRoutePicturesStaticEnabled": true,
     "apiRouteVideosStaticDir": "../../../filestore/media/",
@@ -28,6 +29,7 @@
     "imageMagicAppPath": "../../../contrib/imagemagic/",
     "nodejsBinaryPath": "..\\..\\..\\sbin\\node-cli.bat",
     "inlineJsPath": "dist/backend/create-allinone-html.js",
+    "webshot2pdfCommandPath": "F:\\Projekte\\MatPublishingTools\\dist-js\\webshot2pdf.js",
     "tdocDataStoreAdapter": "TourDocSqlMytbDbAdapter",
     "tdocWritable": true,
     "mapperConfig": {
