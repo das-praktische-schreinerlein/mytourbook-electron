@@ -2,6 +2,24 @@
  
 # Versions
 
+## 2.1.0
+- now bases on mysimplehomepage-5.1.0
+- added pdf-export
+
+### new features
+- see changelog of mysimplehomepage-5.1.0
+- added pdf-export
+
+### improvements
+- none
+
+### bug fixes
+- none
+
+### breaking changes
+- none
+
+
 ## 2.0.0 (2023-12-23)
 - now bases on mysimplehomepage-5.0.0
 - added viewer and page-management

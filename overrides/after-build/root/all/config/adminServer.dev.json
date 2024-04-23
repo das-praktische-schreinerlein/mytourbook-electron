@@ -3,6 +3,24 @@
     "commandConfig": {
         "adminWritable": true,
         "preparedCommands": {
+            "EXPORT: generatePdf": {
+                "description": "generate pdf-files to export-pdf-directory",
+                "commands": [
+                    {
+                        "parameters": {
+                            "command": "pdocPdfManager",
+                            "action": "generateDefaultPagePdfs",
+                            "backend": "config/backend.dev.json",
+                            "sitemap": "config/pdoc-pdfgenerator-de.json",
+                            "langkeys": "lang_de",
+                            "profiles": "profile_dev",
+                            "subtype": "SectionOverviewPage,SectionPage,SimplePage",
+                            "parallel": 1,
+                            "queryParams": ""
+                        }
+                    }
+                ]
+            },
             "PUBLISH Pages: exportPagesToServerConfig": {
                 "description": "export pages to server-configs",
                 "commands": [

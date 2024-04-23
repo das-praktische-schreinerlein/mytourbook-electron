@@ -1,8 +1,10 @@
 {
     "profile": "dev",
     "filePathPDocJson": "../../../config/pdocs.json",
+    "apiRoutePdfsStaticDir": "../../../filestore/pdfs/",
     "nodejsBinaryPath": "..\\..\\..\\sbin\\node-cli.bat",
     "inlineJsPath": "dist/backend/create-allinone-html.js",
+    "webshot2pdfCommandPath": "F:\\Projekte\\MatPublishingTools\\dist-js\\webshot2pdf.js",
     "startPDocApi": true,
     "pdocDataStoreAdapter": "PDocSqlAdapter",
     "pdocWritable": true,

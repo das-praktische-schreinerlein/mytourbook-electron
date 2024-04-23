@@ -1,10 +1,10 @@
 {
   "name": "mysimplehomepage-electron",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "MyCmsElectron-Builder",
   "config": {
     "mycmsgiturl": "https://github.com/das-praktische-schreinerlein/mysimplehomepage.git",
-    "mycmsgitversion": "5.0.0"
+    "mycmsgitversion": "5.1.0"
   },
   "scripts": {
     "all": "npm install && npm run install-appbackend && npm run all-apponly",
