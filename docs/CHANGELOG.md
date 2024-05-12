@@ -2,7 +2,7 @@
  
 # Versions
 
-## 2.1.0
+## 2.1.0 (2024-05-12)
 - now bases on mysimplehomepage-5.1.0
 - added pdf-export
 
