@@ -25,6 +25,8 @@
     "playlistExportUseImageAssetStoreUrls": true,
     "playlistExportUseVideoAssetStoreUrls": false,
     "playlistExportMaxM3uRecordAllowed": 10000,
+    "nodejsBinaryPath": "..\\..\\..\\sbin\\node-cli.bat",
+    "inlineJsPath": "dist/backend/create-allinone-html.js",
     "tdocDataStoreAdapter": "TourDocSolrAdapter",
     "tdocWritable": false,
     "mapperConfig": {
@@ -36,6 +38,7 @@
         "solrCoreTourDocReadUsername": "mytbread",
         "solrCoreTourDocReadPassword": "SolrRocks"
     },
+    "startPDocApi": false,
     "cacheConfig": {
     },
     "port": 4402,

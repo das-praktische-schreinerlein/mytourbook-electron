@@ -8,6 +8,7 @@ export const environment: AppEnvironment = {
     assetsPathVersionSuffix: '',
     backendApiBaseUrl: 'http://localhost:4402/api/v1/',
     tracksBaseUrl: 'http://localhost:4402/api/assets/tracks/',
+    pdfsBaseUrl: 'http://localhost:4402/api/assets/pdfs/',
     audioBaseUrl: 'http://localhost:4402/api/static/audios/',
     picsBaseUrl: 'http://localhost:4402/api/static/pictures/',
     picsPreviewPathResolution: 'x300',
@@ -30,7 +31,8 @@ export const environment: AppEnvironment = {
     hideInternalDescLinks: false,
     hideInternalImages: false,
     startDataMode: DataMode.BACKEND,
-    availableDataModes: [DataMode.BACKEND]
+    availableDataModes: [DataMode.BACKEND],
+    tourDocFacetsFiltered: true // TODO set this to false on sql-environments
 };
 if (console) {
 // unset logger

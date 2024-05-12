@@ -9,6 +9,7 @@ export const environment: AppEnvironment = {
     assetsPathVersionSuffix: '',
     backendApiBaseUrl: undefined,
     tracksBaseUrl: undefined,
+    pdfsBaseUrl: undefined,
     audioBaseUrl: undefined,
     picsBaseUrl: undefined,
     picsPreviewPathResolution: 'x300',
@@ -34,7 +35,8 @@ export const environment: AppEnvironment = {
     hideInternalDescLinks: true,
     hideInternalImages: true,
     startDataMode: DataMode.STATIC,
-    availableDataModes: [DataMode.STATIC]
+    availableDataModes: [DataMode.STATIC],
+    tourDocFacetsFiltered: true
 };
 
 // unset logger

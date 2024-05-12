@@ -14,6 +14,7 @@ export const environment: AppEnvironment = {
     assetsPathVersionSuffix: '',
     backendApiBaseUrl: 'http://localhost:4400/api/v1/',
     tracksBaseUrl: 'http://localhost:4400/api/assets/tracks/',
+    pdfsBaseUrl: 'http://localhost:4400/api/assets/pdfs/',
     audioBaseUrl: 'http://localhost:4400/api/static/audios/',
     picsBaseUrl: 'http://localhost:4400/api/static/pictures/',
     picsPreviewPathResolution: 'x300',
@@ -40,7 +41,8 @@ export const environment: AppEnvironment = {
     hideInternalImages: false,
     startDataMode: DataMode.BACKEND,
     availableDataModes: [DataMode.BACKEND],
-    tourDocDateFormatPipePattern: 'LONG'
+    tourDocDateFormatPipePattern: 'LONG',
+    tourDocFacetsFiltered: false // TODO set this to false on sql-environments
 };
 
 // TODO if you want pdf replace PrintDialogPdfGenerator by JsPdfGenerator and move jspdf in package.json from optional to dep
