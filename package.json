@@ -4,7 +4,9 @@
   "description": "MyCmsElectron-Builder",
   "config": {
     "mycmsgiturl": "https://github.com/das-praktische-schreinerlein/mysimplehomepage.git",
-    "mycmsgitversion": "5.1.0"
+    "mycmsgitversion": "5.1.0",
+    "###FOR DEV###mycmsgiturl": "..\\mysimplehomepage\\.git",
+    "###FOR DEV###mycmsgitversion": "working"
   },
   "scripts": {
     "all": "npm install && npm run install-appbackend && npm run all-apponly",
