@@ -2,7 +2,7 @@
  
 # Versions
 
-## 1.1.0
+## 1.1.0 (2024-05-12)
 - now bases on mytourbook-10.0.0
 
 ### new features
